@@ -1,7 +1,9 @@
+import "./index.css";
+import AppRoutes from "./routes";
 function App() {
   return (
     <>
-      <h1>Hello project</h1>
+      <AppRoutes />
     </>
   );
 }
