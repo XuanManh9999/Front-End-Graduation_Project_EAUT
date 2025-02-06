@@ -1,0 +1,100 @@
+.header {
+    padding: 0 24px;
+    height: 72px;
+    background-color: var(--bg);
+    box-shadow: 0 2px 4px rgba(6, 17, 118, 0.08), 0 4px 12px rgba(6, 17, 118, 0.08);
+    z-index: 1;
+
+    .header__list {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        .header__item {
+            list-style-type: none;
+            font-size: 16px;
+            padding: 0 12px;
+            cursor: pointer;
+
+            &:nth-of-type(1) {
+                padding: 0;
+            }
+
+            .header__item__title {
+                padding: 12px;
+            }
+
+            &>.header__item__title:hover {
+                transition: all 0.2s;
+                background-color:  var(--ud-btn-focus-background-color);
+                color: var(--primary-color);
+                border-radius: 8px;
+            }
+
+            .header__item__logo {
+                // width: 91px;
+                // aspect-ratio: auto 91 / 34;
+                // height: 34px;
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+
+            &.header__item_search {
+                height: 48px;
+                display: flex;
+                align-items: center;
+                flex-grow: 1;
+                border-radius: 100px;
+                border: 1px solid #9194ac;
+                margin: 0 12px;
+
+                .header__item__icon_search {
+                    font-size: 20px;
+                    color: #a8aabd;
+                }
+
+                .header__item__input_search {
+                    border: none;
+                    outline: none;
+                    height: 34px;
+                    width: 100%;
+                    padding: 0 10px;
+                }
+            }
+
+            .btn_cart {
+                width: 40px;
+                height: 40px;
+
+                .header__item__icon_cart {
+                    font-size: 22px;
+                }
+            }
+
+            .header__item_btn {
+                height: 40px;
+                font-weight: bold;
+                border-color: var(--primary-color);
+                padding: 0 20px;
+                color: var(--primary-color);
+
+                &.header__item_btn__bg {
+                    background-color: var(--primary-color);
+                    color: #fff;
+                }
+            }
+
+            .btn_language {
+                width: 40px;
+                height: 40px;
+
+                .header__item__icon_language {
+                    font-size: 24px;
+                }
+            }
+
+        }
+    }
+}

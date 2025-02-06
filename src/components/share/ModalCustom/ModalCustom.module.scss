@@ -1,0 +1,30 @@
+.modal__language {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    row-gap: 4px;
+    justify-content: center;
+
+    .modal__language__item {
+        list-style-type: none;
+        padding: 10px;
+
+        font-size: var(--text-size);
+        &.active {
+            border: 1px solid #303141;
+            border-radius: 4px;
+        }
+        &:hover {
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: var(--ud-btn-focus-background-color);
+            color: var(--primary-color);
+            border-radius: 4px;
+        }
+    }
+}
+
+.title__modal_custom {
+    font-size: 18px;
+}
+

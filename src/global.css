@@ -1,4 +1,6 @@
 :root {
-  --primary-color: #007bff;
-  --secondary-color: #28a745;
+  --primary-color: #19bde6;
+  --fff: #fff;
+  --ud-btn-focus-background-color: color-mix(in sRGB, #19bde6 12%, transparent);
+  --text-size: 16px;
 }

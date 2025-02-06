@@ -1,9 +1,7 @@
 import React from "react";
-import styles from  './Login.module.scss'
+import styles from "./Login.module.scss";
 function Login() {
-  return (
-    <h1 className={`${styles.button} ${styles.test}`}>Nguyen Xuan manh</h1>
-  );
+  return <div>login</div>;
 }
 
 export default Login;
