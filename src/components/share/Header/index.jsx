@@ -39,6 +39,7 @@ function Header() {
     }));
     i18n.changeLanguage(item.id);
   };
+  console.log("re-render");
 
   return (
     <>
@@ -66,7 +67,7 @@ function Header() {
             <input
               type="text"
               className={styles.header__item__input_search}
-              placeholder="Tìm kiếm nội dung bất kỳ..."
+              placeholder={t("find_search__header")}
             />
           </li>
           <li className={styles.header__item}>
@@ -79,19 +80,21 @@ function Header() {
             ></Button>
           </li>
           <li className={styles.header__item}>
-            <Button className={styles.header__item_btn}>
-              <Link to={"/login"}>{t("login")}</Link>
-            </Button>
+            <Link to={"/login"}>
+              <Button className={styles.header__item_btn}>{t("login")}</Button>
+            </Link>
           </li>
           <li className={styles.header__item}>
-            <Button
-              className={classNames(
-                styles.header__item_btn,
-                styles.header__item_btn__bg
-              )}
-            >
-              <Link to={"/register"}>{t("register")}</Link>
-            </Button>
+            <Link to={"/register"}>
+              <Button
+                className={classNames(
+                  styles.header__item_btn,
+                  styles.header__item_btn__bg
+                )}
+              >
+                {t("register")}
+              </Button>
+            </Link>
           </li>
           <li className={styles.header__item}>
             <Button

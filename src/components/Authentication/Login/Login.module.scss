@@ -1,7 +1,22 @@
-.button {
-    font-size: 30px;
-    background-color: red;
-}
-.test {
-    color: #fff;
+.login__form {
+    padding: 64px 50px;
+    margin: 0 70px;
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+
+    .login__item {
+        padding-top: 48px;
+
+        .login__item__title {
+            font-weight: 600;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        &:nth-of-type(2) {
+            max-width: 420px;
+        }
+
+
+    }
 }
