@@ -1,22 +1,121 @@
 .login__form {
-    padding: 64px 50px;
-    margin: 0 70px;
-    display: grid;
-    grid-template-columns: 2fr 1.5fr;
+  padding: 64px 50px;
+  margin: 0 70px;
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
 
-    .login__item {
+  .login__item {
+    &:nth-of-type(2) {
+      max-width: 420px;
+      .login__item__title {
         padding-top: 48px;
+        font-weight: 600;
+        line-height: 1.2;
+        text-align: center;
+        letter-spacing: 0;
+      }
 
-        .login__item__title {
-            font-weight: 600;
-            line-height: 1.2;
+      .login__item__form {
+        margin-top: 32px;
+        font-weight: 500;
+        .login__item__username {
+          height: 46px;
+          font-size: 16px;
+          &::placeholder {
+            color: black;
+            font-weight: 500;
+          }
+        }
+        .login__item__password {
+          margin-top: 12px;
+          height: 46px;
+          font-size: 16px;
+          input {
+            &::placeholder {
+              color: black;
+              font-weight: 500;
+            }
+          }
+        }
+
+        .login__item__submid {
+          margin: 25px 0;
+          width: 100%;
+          height: 46px;
+          font-weight: bold;
+          font-size: 16px;
+          background-color: var(--primary-color);
+          color: #fff;
+        }
+        .login__item__more_option {
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          hr {
+            width: 100%;
+            position: absolute;
+            top: calc(50% + 1px);
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--color-gray);
+            z-index: -1;
+          }
+          p {
+            display: inline-block;
+            position: relative;
             text-align: center;
+            font-size: 14px;
+            z-index: 99;
+            padding: 4px 8px;
+            color: #595c73;
+            background-color: #fff;
+          }
         }
-
-        &:nth-of-type(2) {
-            max-width: 420px;
+        .login__item__more_option__list {
+          margin-top: 32px;
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          button {
+            font-size: 40px;
+            padding: 20px 20px;
+            .login__item__more_option__list__icon {
+              font-size: 23px;
+            }
+          }
         }
-
-
+        .login__item__form__footer {
+          margin-top: 64px;
+          .login__item__form__footer__register,
+          .login__item__form__footer__forgot_password {
+            display: flex;
+            justify-content: center;
+            background-color: #f6f7f9;
+            padding: 16px;
+            gap: 4px;
+            a {
+              font-size: 16px;
+            }
+          }
+          .login__item__form__footer__register {
+            border-bottom: 0.1rem solid #d1d2e0;
+          }
+        }
+      }
     }
+  }
+}
+
+.goooge_color {
+  color: var(--google);
+}
+
+.facebook_color {
+  color: var(--facebook);
+}
+
+.github_color {
+  color: var(--github);
 }

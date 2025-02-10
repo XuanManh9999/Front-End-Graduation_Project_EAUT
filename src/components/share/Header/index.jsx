@@ -39,7 +39,6 @@ function Header() {
     }));
     i18n.changeLanguage(item.id);
   };
-  console.log("re-render");
 
   return (
     <>
@@ -61,8 +60,7 @@ function Header() {
             className={classNames(
               styles.header__item,
               styles.header__item_search
-            )}
-          >
+            )}>
             <FaSearch className={styles.header__item__icon_search} />
             <input
               type="text"
@@ -76,8 +74,9 @@ function Header() {
           <li className={styles.header__item}>
             <Button
               className={styles.btn_cart}
-              icon={<BsCart3 className={styles.header__item__icon_cart} />}
-            ></Button>
+              icon={
+                <BsCart3 className={styles.header__item__icon_cart} />
+              }></Button>
           </li>
           <li className={styles.header__item}>
             <Link to={"/login"}>
@@ -90,8 +89,7 @@ function Header() {
                 className={classNames(
                   styles.header__item_btn,
                   styles.header__item_btn__bg
-                )}
-              >
+                )}>
                 {t("register")}
               </Button>
             </Link>
