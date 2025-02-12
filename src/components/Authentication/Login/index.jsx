@@ -5,6 +5,7 @@ import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import URL from "../../../utils/url-route"
 function Login() {
   const { t } = useTranslation();
   return (
@@ -64,11 +65,11 @@ function Login() {
           <div className={styles.login__item__form__footer}>
             <div className={styles.login__item__form__footer__register}>
               <p>{t("not_account")} </p>
-              <Link to={"#"}>{t("register")}</Link>
+              <Link to={URL.AUTH.REGISTER}>{t("register")}</Link>
             </div>
             <div className={styles.login__item__form__footer__forgot_password}>
               <p>{t("forgot_password__title")} </p>
-              <Link to={"#"}>{t("forgot_password")}</Link>
+              <Link to={URL.AUTH.FORGOT_PASSWORD}>{t("forgot_password")}</Link>
             </div>
           </div>
         </div>

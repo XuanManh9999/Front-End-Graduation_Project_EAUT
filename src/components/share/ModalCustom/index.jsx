@@ -3,7 +3,6 @@ import { Modal } from "antd";
 import classNames from "classnames";
 import styles from "./ModalCustom.module.scss";
 import { languages } from "../../../data/common.jsx";
-// , styles.active
 function ModalCustom({
   typeModal,
   title,

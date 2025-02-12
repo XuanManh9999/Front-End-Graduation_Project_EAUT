@@ -1,0 +1,71 @@
+.form_register {
+  padding: 64px 50px;
+  margin: 0 70px;
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  .form_register__item {
+    &:nth-of-type(2) {
+      max-width: 420px;
+      .register__item__title {
+        padding-top: 48px;
+        font-weight: 600;
+        line-height: 1.2;
+        text-align: center;
+        letter-spacing: 0;
+      }
+      .form_register__item__submid {
+        margin-top: 32px;
+        .form_register__item__submid_username,
+        .form_register__item__submid_email {
+          height: 46px;
+          font-size: 16px;
+          &::placeholder {
+            color: black;
+            font-weight: 500;
+          }
+        }
+        .form_register__item__submid_username {
+          margin-top: 12px;
+        }
+        .form_register__item__submid_password {
+          margin-top: 12px;
+          height: 46px;
+          font-size: 16px;
+          input {
+            &::placeholder {
+              color: black;
+              font-weight: 500;
+            }
+          }
+        }
+        .form_register__item_btn_submid {
+          margin: 25px 0;
+          width: 100%;
+          height: 46px;
+          font-weight: bold;
+          font-size: 16px;
+          background-color: var(--primary-color);
+          color: #fff;
+        }
+        .form_register__item__submid__clause {
+            margin-top: 16px;
+            font-size: 14px;
+            text-align: center;
+            color: #303141;
+        }
+      }
+      .form_register__item__orther {
+        margin-top: 24px;
+        padding: 16px 0;
+        background-color: rgb(246, 247, 249);
+        text-align: center;
+        font-size: 16px;
+        color: #000;
+        a {
+            font-size: 16px;
+            color: var(--primary-color);
+        }
+      }
+    }
+  }
+}

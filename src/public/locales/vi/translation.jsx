@@ -12,6 +12,16 @@ const vi = {
   not_account: "Bạn không có tài khoản?",
   forgot_password__title: "Bạn không nhớ mật khẩu?",
   forgot_password: "Quên mật khẩu",
+  has_account: "Bạn đã có tài khoản?",
+  register_title: "Đăng ký bằng email",
+  register_username: "Tên đăng nhập...",
+  register_email: "Email...",
+  register_password: "Mật khẩu...",
+  register_desc: "Bằng việc đăng ký, bạn đồng ý với",
+  register_clause: "Điều khoản sử dụng",
+  and: "và",
+  privacy_policy: "Chính sách về quyền riêng tư",
+  input_email: "Nhập vào email..."
 };
 
 export default vi;
