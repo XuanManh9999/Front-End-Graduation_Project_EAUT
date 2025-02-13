@@ -1,6 +1,7 @@
 const vi = {
   discover: "Khám phá",
   learn: "Giảng dạy trên CODE ZEN",
+  study: "Học tập",
   login: "Đăng nhập",
   register: "Đăng ký",
   find_search__header: "Tìm kiếm nội dung bất kỳ...",

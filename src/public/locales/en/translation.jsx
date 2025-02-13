@@ -1,6 +1,7 @@
 const en = {
   discover: "Discover",
   learn: "Teaching On CODE ZEN",
+  study: "Study",
   login: "Login",
   register: "Register",
   find_search__header: "Search for any content...",

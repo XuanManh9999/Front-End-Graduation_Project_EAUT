@@ -1,3 +1,145 @@
+.home_page_login__acount {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 24px;
+  background-color: var(--fff);
+  margin: 0 15px;
+  .home_page_login__welcome {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 32px 0;
+    img {
+      width: 64px;
+      height: 64px;
+      cursor: pointer;
+      border: 1px solid #d1d2e0;
+      aspect-ratio: auto 64 / 64;
+      border-radius: 50%;
+      &:hover {
+        transition: all ease-in;
+        outline: 1px solid var(--primary-color);
+      }
+    }
+    .home_page_login__acount {
+      padding: unset;
+      h2 {
+        font-size: 24px;
+        color: var(--text-color);
+      }
+      span {
+        font-size: 16px;
+        color: var(--text-color);
+        font-weight: 400;
+      }
+    }
+  }
+  .home_page_login__content__my {
+    .home_page_login__content__my__title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        font-size: 26px;
+        color: var(--text-color);
+      }
+      a {
+        font-size: var(--text-size);
+        color: var(--primary-color);
+        font-weight: bold;
+        padding: 10px;
+        &:hover {
+          transition: all 0.2s;
+          background-color: var(--ud-btn-focus-background-color);
+          color: var(--primary-color);
+          border-radius: 8px;
+        }
+      }
+    }
+    .home_page_login__content__my__learned {
+      margin-top: 20px;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 10px;
+      row-gap: 10px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      max-width: 100%;
+      .home_page_login__content__my__learned__item {
+        // max-width: 450px;
+        overflow: hidden;
+        cursor: pointer;
+        display: grid;
+        grid-template-columns: 1.2fr 3.2fr;
+        height: 150px;
+        border: 1px solid #d1d2e0;
+        .home_page_login__content__my__learned__item__left {
+          width: 100%;
+          position: relative;
+          img {
+            min-width: 120px;
+            height: 150px;
+            aspect-ratio: 120 / 150;
+            object-fit: cover;
+          }
+          .home_page_login__content__my__learned__item__left__overlay {
+            background: rgba(29, 30, 39, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+          .home_page_login__content__my__learned__item__left__icon_play {
+            position: absolute;
+            z-index: 1;
+            font-size: 50px;
+            left: 50%;
+            top: 50%; /* Thêm vào để căn giữa theo chiều dọc */
+            transform: translate(
+              -50%,
+              -50%
+            ); /* Dịch chuyển phần tử về giữa chính xác */
+            cursor: pointer;
+            color: white;
+          }
+        }
+        .home_page_login__content__my__learned__item__right {
+          flex: 1;
+          padding: 16px;
+          display: flex;
+          flex-direction: column;
+          row-gap: 10px;
+          .home_page_login__content__my__learned__item__right__top {
+            .home_page_login__content__my__learned__item__right__name_course {
+              width: 100%;
+              max-width: 300px;
+              white-space: nowrap; /* Ngăn không cho văn bản xuống dòng */
+              overflow: hidden; /* Ẩn phần văn bản vượt quá */
+              text-overflow: ellipsis; /* Hiển thị dấu ... khi văn bản vượt quá */
+              display: inline-block; /* Đảm bảo phần tử không chiếm hết chiều rộng của container */
+            }
+            .home_page_login__content__my__learned__item__right__title {
+              width: 100%;
+              max-width: 300px;
+              white-space: nowrap; /* Ngăn không cho văn bản xuống dòng */
+              overflow: hidden; /* Ẩn phần văn bản vượt quá */
+              text-overflow: ellipsis; /* Hiển thị dấu ... khi văn bản vượt quá */
+              display: inline-block; /* Đảm bảo phần tử không chiếm hết chiều rộng của container */
+            }
+          }
+          .home_page_login__content__my__learned__item__right__bot {
+            margin-top: 12px;
+            .home_page_login__content__my__learned__item__right__bot__process {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .home_page_not__login {
   padding: 24px 24px 0;
   position: relative;

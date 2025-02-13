@@ -116,6 +116,9 @@ function Header() {
             <p className={styles.header__item__title}>{t("learn")}</p>
           </li>
           <li className={styles.header__item}>
+            <p className={styles.header__item__title}>{t("study")}</p>
+          </li>
+          <li className={styles.header__item}>
             <Button
               className={styles.btn_cart}
               icon={
