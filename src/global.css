@@ -4,7 +4,8 @@
   --ud-btn-focus-background-color: color-mix(in sRGB, #19bde6 12%, transparent);
   --text-size: 16px;
   ----color-gray: gray;
-  --facebook: #1877F2;
+  --facebook: #1877f2;
   --github: #181717;
-  --google: linear-gradient(45deg, #4285F4, #EA4335, #FBBC05, #34A853);
+  --google: linear-gradient(45deg, #4285f4, #ea4335, #fbbc05, #34a853);
+  --text-color: #303141;
 }

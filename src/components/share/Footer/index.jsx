@@ -9,72 +9,69 @@ function Footer() {
     <div className={styles.footer}>
       <div className={styles.footer__body}>
         <div className={styles.footer__item}>
-          <h3 className={styles.footer__item__title}>Giới thiệu</h3>
+          <h3 className={styles.footer__item__title}>{t('footer_Introduce')}</h3>
           <ul>
             <li>
-              <Link>Giới thiệu</Link>
+              <Link>{t('footer_Introduce')}</Link>
             </li>
             <li>
-              <Link>Nghề nghiệp</Link>
+              <Link>{t('footer_job')}</Link>
             </li>
             <li>
-              <Link>Hãy liên hệ với tôi</Link>
+              <Link>{t('footer_contact')}</Link>
             </li>
             <li>
-              <Link>Blog</Link>
+              <Link>{t('footer_blog')}</Link>
             </li>
             <li>
-              <Link>Nhà đầu tư</Link>
+              <Link>{t('footer_investor')}</Link>
             </li>
           </ul>
         </div>
         <div className={styles.footer__item}>
-          <h3 className={styles.footer__item__title}>Khám phá CODE ZEN</h3>
+          <h3 className={styles.footer__item__title}>{t('discover')} CODE ZEN</h3>
           <ul>
             <li>
-              <Link></Link>
+              <Link>{t('footer_download')}</Link>
             </li>
             <li>
-              <Link>Tải ứng dụng</Link>
+              <Link>{t('footer_teacher')} CODE ZEN</Link>
             </li>
             <li>
-              <Link>Giảng dạy trên CODE ZEN</Link>
+              <Link>{t('footer_pakage')}</Link>
             </li>
             <li>
-              <Link>Gói và giá cả</Link>
+              <Link>{t('footer_connect')}</Link>
             </li>
             <li>
-              <Link>Đơn vị liên kết</Link>
-            </li>
-            <li>
-              <Link>Trợ giúp và hỗ trợ</Link>
+              <Link>{t('footer_help')}</Link>
             </li>
           </ul>
         </div>
         <div className={styles.footer__item}>
-          <h3 className={styles.footer__item__title}>Udemy for Business</h3>
+          <h3 className={styles.footer__item__title}>CODE ZEN {t('footer_business')}</h3>
           <ul>
             <li>
-              <Link>Udemy Business</Link>
+              <Link>CODE ZEN {t('footer_business')}</Link>
             </li>
           </ul>
         </div>
         <div className={styles.footer__item}>
           <h3 className={styles.footer__item__title}>
-            Pháp lý & Khả năng tiếp cận
+            {t('footer_legal_accessibility')}
           </h3>
           <ul>
             <li>
-              <Link>Tuyến bố về khả năng tiếp cận</Link>
+              <Link>{t('footer_accessibility_statement')}</Link>
             </li>
             <li>
-              <Link>Chính sách về quyền riêng tư</Link>
+              <Link>{t('footer_privacy_policy')}</Link>
             </li>
             <li>
-              <Link>Sơ đồ trang web</Link>
+              <Link>{t('footer_sitemap')}</Link>
             </li>
             <li>
-              <Link>Điều khoản</Link>
+              <Link>{t('footer_clause')}</Link>
             </li>
           </ul>
         </div>

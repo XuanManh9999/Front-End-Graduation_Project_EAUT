@@ -1,17 +1,39 @@
 .home_page_not__login {
-    padding: 24px 24px 0;
-    .home_page_not__login_img {
+  padding: 24px 24px 0;
+  position: relative;
+  min-height: 610px;
+  .home_page_not__login_img {
+    width: 1920px;
+    height: 702px;
+    transform: translateX(-50%);
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    vertical-align: middle;
+    aspect-ratio: auto 1920 / 702;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+  }
+  .home_page_not__login__sale {
+    .home_page_not__login__title {
+      font-size: 28px;
+      padding: 24px 42px 48px;
+      text-align: center;
+      font-weight: 700;
     }
-    .home_page_not__login__sale {
-        .home_page_not__login__title {
-            padding: 24px 42px 48px;
-            text-align: center;
-            font-weight:  700;
-        }
-        .home_page_not__login__outstanding {
-            .home_page_not__login__item {
-
-            }
-        }
+    .home_page_not__login__outstanding {
+      padding-bottom: 32px;
+      padding-left: 32px;
+      max-width: 508px;
+      .home_page_not__login__item {
+        margin-top: 5px;
+        font-size: 24px;
+        color: var(--text-color);
+        padding-left: 8px;
+        text-size-adjust: 100%;
+      }
     }
+  }
 }
