@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Progress, Tooltip } from "antd"
 import { MdOutlinePlayCircle } from "react-icons/md";
+import CarouselProduct from "../../share/CarouselProduct";
+import CourseProductList from "../../share/CourseProductList";
 function Current() {
   const { t } = useTranslation()
   const [isLogin, setIsLogin] = useState(true);
@@ -38,7 +40,7 @@ function Current() {
                   </div>
                   <div className={styles.home_page_login__content__my__learned__item__right__bot}>
                     <p><strong>Bài giảng: còn 25 phút</strong></p>
-                      <Progress percent={0} />
+                    <Progress percent={0} />
                   </div>
                 </div>
               </div>
@@ -95,6 +97,10 @@ function Current() {
               </div>
             </div>
           </div>
+
+          <CarouselProduct />
+          <CarouselProduct title={"Phổ biến cho lập trình web"} />
+          <CourseProductList />
         </div>
 
 

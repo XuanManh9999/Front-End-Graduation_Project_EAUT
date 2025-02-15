@@ -39,7 +39,7 @@ const items = [
 
 function Header() {
   const { t, i18n } = useTranslation();
-  const [isLogin, setIsLogin] = useState(true)
+  const [isLogin, setIsLogin] = useState(false)
   const [isHovered, setIsHovered] = useState({
     avatar: false,
     bell: false

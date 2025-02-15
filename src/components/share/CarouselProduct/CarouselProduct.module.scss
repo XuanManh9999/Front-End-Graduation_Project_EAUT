@@ -1,0 +1,47 @@
+.title_section {
+  margin: 24px 0;
+  font-size: 22px;
+  color: var(--text-color);
+}
+
+.customPrev {
+  z-index: 1;
+  font-size: 16px;
+  color: #3a3b4a;
+  cursor: pointer;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(6, 17, 118, 0.08),
+    0 4px 12px rgba(6, 17, 118, 0.08);
+  padding: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+}
+
+/* Tùy chỉnh mũi tên phải */
+.customNext {
+  z-index: 1;
+  font-size: 16px;
+  color: #3a3b4a;
+  cursor: pointer;
+  position: absolute;
+  top: 30%;
+  right: -35px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(6, 17, 118, 0.08),
+    0 4px 12px rgba(6, 17, 118, 0.08);
+  padding: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+}
+.hidden {
+  display: none !important;
+}
