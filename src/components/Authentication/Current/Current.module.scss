@@ -1,181 +1,354 @@
-.home_page_login__acount {
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0 24px;
-  background-color: var(--fff);
-  margin: 0 15px;
-  .home_page_login__welcome {
+// Thêm các breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-large: 1340px;
+
+// Mixins cho responsive
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+.dashboard {
+  max-width: $breakpoint-large;
+  margin: 0 auto;
+  padding: 24px;
+
+  @include tablet {
+    padding: 16px;
+  }
+
+  @include mobile {
+    padding: 12px;
+  }
+
+  .welcome_section {
     display: flex;
     align-items: center;
-    gap: 5px;
-    padding: 32px 0;
-    img {
+    gap: 16px;
+    margin-bottom: 32px;
+
+    @include mobile {
+      flex-direction: column;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .avatar {
       width: 64px;
       height: 64px;
-      cursor: pointer;
-      border: 1px solid #d1d2e0;
-      aspect-ratio: auto 64 / 64;
       border-radius: 50%;
-      &:hover {
-        transition: all ease-in;
-        outline: 1px solid var(--primary-color);
+      object-fit: cover;
+
+      @include mobile {
+        width: 80px;
+        height: 80px;
       }
     }
-    .home_page_login__acount {
-      padding: unset;
+
+    .welcome_text {
       h2 {
         font-size: 24px;
-        color: var(--text-color);
+
+        @include tablet {
+          font-size: 20px;
+        }
+
+        @include mobile {
+          font-size: 18px;
+        }
       }
+
       span {
-        font-size: 16px;
-        color: var(--text-color);
-        font-weight: 400;
+        color: #6a6f73;
+        font-size: 14px;
       }
     }
   }
-  .home_page_login__content__my {
-    .home_page_login__content__my__title {
+
+  .learning_section {
+    background: #fff;
+    border: 1px solid #d1d7dc;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 32px;
+
+    @include tablet {
+      padding: 16px;
+    }
+
+    @include mobile {
+      padding: 12px;
+    }
+
+    .section_header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      h2 {
-        font-size: 26px;
-        color: var(--text-color);
+      align-items: center;
+      margin-bottom: 24px;
+
+      @include mobile {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
       }
+
+      h2 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1c1d1f;
+      }
+
       a {
-        font-size: var(--text-size);
         color: var(--primary-color);
-        font-weight: bold;
-        padding: 10px;
+        font-weight: 700;
+        text-decoration: none;
+
         &:hover {
-          transition: all 0.2s;
-          background-color: var(--ud-btn-focus-background-color);
-          color: var(--primary-color);
-          border-radius: 8px;
+          color: #401b9c;
         }
       }
     }
-    .home_page_login__content__my__learned {
-      margin-top: 20px;
-      margin-bottom: 48px;
+
+    .learning_list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      column-gap: 10px;
-      row-gap: 10px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      max-width: 100%;
-      .home_page_login__content__my__learned__item {
-        // max-width: 450px;
-        overflow: hidden;
-        cursor: pointer;
-        display: grid;
-        grid-template-columns: 1.2fr 3.2fr;
-        height: 150px;
-        border: 1px solid #d1d2e0;
-        .home_page_login__content__my__learned__item__left {
-          width: 100%;
-          position: relative;
-          img {
-            min-width: 120px;
-            height: 150px;
-            aspect-ratio: 120 / 150;
-            object-fit: cover;
-          }
-          .home_page_login__content__my__learned__item__left__overlay {
-            background: rgba(29, 30, 39, 0.5);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-          }
-          .home_page_login__content__my__learned__item__left__icon_play {
-            position: absolute;
-            z-index: 1;
-            font-size: 50px;
-            left: 50%;
-            top: 50%; /* Thêm vào để căn giữa theo chiều dọc */
-            transform: translate(
-              -50%,
-              -50%
-            ); /* Dịch chuyển phần tử về giữa chính xác */
-            cursor: pointer;
-            color: white;
-          }
-        }
-        .home_page_login__content__my__learned__item__right {
-          flex: 1;
-          padding: 16px;
-          display: flex;
-          flex-direction: column;
-          row-gap: 10px;
-          .home_page_login__content__my__learned__item__right__top {
-            .home_page_login__content__my__learned__item__right__name_course {
-              width: 100%;
-              max-width: 300px;
-              white-space: nowrap; /* Ngăn không cho văn bản xuống dòng */
-              overflow: hidden; /* Ẩn phần văn bản vượt quá */
-              text-overflow: ellipsis; /* Hiển thị dấu ... khi văn bản vượt quá */
-              display: inline-block; /* Đảm bảo phần tử không chiếm hết chiều rộng của container */
-            }
-            .home_page_login__content__my__learned__item__right__title {
-              width: 100%;
-              max-width: 300px;
-              white-space: nowrap; /* Ngăn không cho văn bản xuống dòng */
-              overflow: hidden; /* Ẩn phần văn bản vượt quá */
-              text-overflow: ellipsis; /* Hiển thị dấu ... khi văn bản vượt quá */
-              display: inline-block; /* Đảm bảo phần tử không chiếm hết chiều rộng của container */
-            }
-          }
-          .home_page_login__content__my__learned__item__right__bot {
-            margin-top: 12px;
-            .home_page_login__content__my__learned__item__right__bot__process {
-            }
-          }
-        }
+      gap: 16px;
+
+      @include desktop {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include tablet {
+        grid-template-columns: 1fr;
       }
     }
   }
 }
 
-.home_page_not__login {
-  padding: 24px 24px 0;
-  position: relative;
-  min-height: 610px;
-  .home_page_not__login_img {
-    width: 1920px;
-    height: 702px;
-    transform: translateX(-50%);
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    z-index: -1;
-    vertical-align: middle;
-    aspect-ratio: auto 1920 / 702;
-    overflow-clip-margin: content-box;
-    overflow: clip;
+.learning_item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #d1d7dc;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+
+  @include tablet {
+    flex-direction: column;
   }
-  .home_page_not__login__sale {
-    .home_page_not__login__title {
-      font-size: 28px;
-      padding: 24px 42px 48px;
-      text-align: center;
-      font-weight: 700;
+
+  &:hover {
+    background: #f7f9fa;
+
+    .icon_play {
+      opacity: 1;
+      transform: scale(1);
     }
-    .home_page_not__login__outstanding {
-      padding-bottom: 32px;
-      padding-left: 32px;
-      max-width: 508px;
-      .home_page_not__login__item {
-        margin-top: 5px;
-        font-size: 24px;
-        color: var(--text-color);
-        padding-left: 8px;
-        text-size-adjust: 100%;
+  }
+
+  &__left {
+    position: relative;
+    width: 120px;
+    height: 68px;
+    flex-shrink: 0;
+
+    @include tablet {
+      width: 100%;
+      height: 180px;
+    }
+
+    @include mobile {
+      height: 160px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+    }
+
+    .icon_play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      color: white;
+      font-size: 32px;
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+  }
+
+  &__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include tablet {
+      padding: 12px 0;
+    }
+  }
+
+  &__content {
+    .course_name {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1c1d1f;
+      margin-bottom: 4px;
+
+      @include mobile {
+        font-size: 14px;
       }
     }
+
+    .lesson_title {
+      font-size: 14px;
+      color: #6a6f73;
+      margin: 0;
+
+      @include mobile {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__progress {
+    p {
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #6a6f73;
+    }
+
+    :global(.ant-progress) {
+      line-height: 1;
+
+      .ant-progress-bg {
+        height: 4px !important;
+        background: #5624d0;
+      }
+    }
+  }
+}
+
+// Styles cho phần không đăng nhập
+.home_page_not__login {
+  position: relative;
+  margin-bottom: 48px;
+
+  &_img {
+    width: 100%;
+    height: auto;
+  }
+
+  &__sale {
+    position: absolute;
+    top: 50%;
+    left: 48px;
+    transform: translateY(-50%);
+    max-width: 440px;
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+
+    @include tablet {
+      position: relative;
+      left: 0;
+      transform: none;
+      max-width: 100%;
+      margin: -48px 16px 0;
+    }
+
+    @include mobile {
+      margin: -32px 12px 0;
+      padding: 16px;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #1c1d1f;
+
+    @include tablet {
+      font-size: 28px;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__outstanding {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include mobile {
+      margin-top: 12px;
+    }
+  }
+
+  &__item {
+    font-size: 16px;
+    color: #1c1d1f;
+    margin-bottom: 8px;
+    padding-left: 24px;
+    position: relative;
+
+    &:before {
+      content: "•";
+      position: absolute;
+      left: 8px;
+      color: #5624d0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include mobile {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+  }
+}
+
+// Responsive cho CarouselProduct và CourseProductList
+:global(.carousel-product),
+:global(.course-product-list) {
+  @include tablet {
+    padding: 0 16px;
+  }
+
+  @include mobile {
+    padding: 0 12px;
   }
 }

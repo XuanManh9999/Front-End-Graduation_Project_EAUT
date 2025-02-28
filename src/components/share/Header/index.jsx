@@ -5,32 +5,58 @@ import classNames from "classnames";
 import { FaSearch } from "react-icons/fa";
 import { BsCart3 } from "react-icons/bs";
 import { GrLanguage } from "react-icons/gr";
-import { Link } from "react-router-dom";
+import { data, Link } from "react-router-dom";
 import ModalCustom from "../ModalCustom";
 import { useTranslation } from "react-i18next";
 import { FaRegBell } from "react-icons/fa";
+import DrawerCustom from "../DrawerCustom";
+
+const detailAuthor = {
+  items: [
+    {
+      key: "custom",
+      label: (
+        <div className={styles.customDropdown}>
+          <ul>
+            <li>Trang cá nhân</li>
+            <li>Đăng xuất</li>
+          </ul>
+        </div>
+      ),
+    },
+  ],
+};
 
 const items = [
   {
-    key: '1',
+    key: "1",
     label: (
-      <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+      <div
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.antgroup.com">
         1st menu item
-      </a>
+      </div>
     ),
   },
   {
-    key: '2',
+    key: "2",
     label: (
-      <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.aliyun.com">
         2nd menu item
       </a>
     ),
   },
   {
-    key: '3',
+    key: "3",
     label: (
-      <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.luohanacademy.com">
         3rd menu item
       </a>
     ),
@@ -39,11 +65,24 @@ const items = [
 
 function Header() {
   const { t, i18n } = useTranslation();
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(true);
   const [isHovered, setIsHovered] = useState({
     avatar: false,
-    bell: false
-  });  // state để theo dõi trạng thái hover
+    bell: false,
+  }); // state để theo dõi trạng thái hover
+
+  const [isCart, setIsCart] = useState({
+    title: "Giỏ hàng",
+    isShow: false,
+  });
+
+  const handleCloseDrawerCart = () => {
+    setIsCart((prev) => ({
+      ...prev,
+      isShow: false,
+    }));
+  };
+
   const [isShowChangeLanguage, setIsShowLanguage] = useState({
     title: "Chọn một ngôn ngữ",
     isShowModal: false,
@@ -74,15 +113,23 @@ function Header() {
   };
 
   // Quản lý sự kiện hover
-  const handleMouseEnter = (name_type) => setIsHovered(prev => ({
-    ...prev,
-    [name_type]: true
-  }));
-  const handleMouseLeave = (name_type) => setIsHovered(prev => ({
-    ...prev,
-    [name_type]: false
-  }))
+  const handleMouseEnter = (name_type) =>
+    setIsHovered((prev) => ({
+      ...prev,
+      [name_type]: true,
+    }));
+  const handleMouseLeave = (name_type) =>
+    setIsHovered((prev) => ({
+      ...prev,
+      [name_type]: false,
+    }));
 
+  const handleOnClickCart = () => {
+    setIsCart((prev) => ({
+      ...prev,
+      isShow: true,
+    }));
+  };
 
   return (
     <>
@@ -121,72 +168,73 @@ function Header() {
           <li className={styles.header__item}>
             <Button
               className={styles.btn_cart}
+              onClick={handleOnClickCart}
               icon={
                 <Badge count={0} showZero>
                   <BsCart3 className={styles.header__item__icon_cart} />
                 </Badge>
-              }
-            >
-            </Button>
+              }></Button>
           </li>
-          {isLogin == true ? <>
-            <li className={styles.header__item}
-              onMouseEnter={() => handleMouseEnter("bell")}
-              onMouseLeave={() => handleMouseLeave("bell")}
-            >
-              <Dropdown
-                menu={{
-                  items,
-                }}
-                placement="bottom"
-                arrow
-              >
-                <Button
-                  className={styles.btn_cart}
-                  icon={
-                    <Badge count={0} showZero>
-                      <FaRegBell className={styles.header__item__icon_cart} />
-                    </Badge>
-                  }></Button>
-              </Dropdown>
-
-            </li>
-            <li className={styles.header__item}
-              onMouseEnter={() => handleMouseEnter("avatar")}
-              onMouseLeave={() => handleMouseLeave("avatar")}
-            >
-              <Dropdown
-                menu={{
-                  items,
-                }}
-                placement="bottom"
-                arrow
-              >
-                <img className={styles.header__item__avatar} src="https://img-c.udemycdn.com/user/75x75/285978675_5cf5.jpg" alt="avatar" />
-              </Dropdown>
-
-            </li>
-
-          </> : <>
-
-
-            <li className={styles.header__item}>
-              <Link to={"/login"}>
-                <Button className={styles.header__item_btn}>{t("login")}</Button>
-              </Link>
-            </li>
-            <li className={styles.header__item}>
-              <Link to={"/register"}>
-                <Button
-                  className={classNames(
-                    styles.header__item_btn,
-                    styles.header__item_btn__bg
-                  )}>
-                  {t("register")}
-                </Button>
-              </Link>
-            </li>
-          </>}
+          {isLogin == true ? (
+            <>
+              <li
+                className={styles.header__item}
+                onMouseEnter={() => handleMouseEnter("bell")}
+                onMouseLeave={() => handleMouseLeave("bell")}>
+                <Dropdown
+                  menu={{
+                    items,
+                  }}
+                  placement="bottom"
+                  arrow>
+                  <Button
+                    className={styles.btn_cart}
+                    icon={
+                      <Badge count={0} showZero>
+                        <FaRegBell className={styles.header__item__icon_cart} />
+                      </Badge>
+                    }></Button>
+                </Dropdown>
+              </li>
+              <li
+                className={styles.header__item}
+                onMouseEnter={() => handleMouseEnter("avatar")}
+                onMouseLeave={() => handleMouseLeave("avatar")}>
+                <Dropdown
+                  menu={detailAuthor}
+                  className={styles.dropdown__author}
+                  placement="bottom"
+                  arrow>
+                  <img
+                    className={styles.header__item__avatar}
+                    src="https://img-c.udemycdn.com/user/75x75/285978675_5cf5.jpg"
+                    alt="avatar"
+                  />
+                </Dropdown>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className={styles.header__item}>
+                <Link to={"/login"}>
+                  <Button className={styles.header__item_btn}>
+                    {t("login")}
+                  </Button>
+                </Link>
+              </li>
+              <li className={styles.header__item}>
+                <Link to={"/register"}>
+                  <Button
+                    className={classNames(
+                      styles.header__item_btn,
+                      styles.header__item_btn__bg
+                    )}>
+                    {t("register")}
+                  </Button>
+                </Link>
+              </li>
+            </>
+          )}
 
           <li className={styles.header__item}>
             <Button
@@ -206,7 +254,11 @@ function Header() {
         handleCancel={handleChangeLanguageCancel}
         handleOnClickItem={handleClickItemChangeLanguage}
       />
-
+      <DrawerCustom
+        title={isCart.title}
+        open={isCart.isShow}
+        onClose={handleCloseDrawerCart}
+      />
     </>
   );
 }
