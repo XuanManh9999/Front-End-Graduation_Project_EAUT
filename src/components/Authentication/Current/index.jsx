@@ -37,24 +37,24 @@ function Current() {
   const LoggedInView = () => (
     <div className={styles.dashboard}>
       <div className={styles.welcome_section}>
-        <img
-          src="https://img-c.udemycdn.com/user/100x100/285978675_5cf5.jpg"
-          alt="avatar"
+              <img
+                src="https://img-c.udemycdn.com/user/100x100/285978675_5cf5.jpg"
+                alt="avatar"
           className={styles.avatar}
-        />
+              />
         <div className={styles.welcome_text}>
-          <h2>Chào mừng Nguyễn Xuân Mạnh trở lại!</h2>
-          <span>Lập trình viên web</span>
-        </div>
-      </div>
+                <h2>Chào mừng Nguyễn Xuân Mạnh trở lại!</h2>
+                <span>Lập trình viên web</span>
+              </div>
+            </div>
 
       <div className={styles.learning_section}>
         <div className={styles.section_header}>
-          <h2>Hãy bắt đầu học nào</h2>
+                <h2>Hãy bắt đầu học nào</h2>
           <Link to="/learning" className="section_header__learn">
             Học tập
           </Link>
-        </div>
+              </div>
 
         <div className={styles.learning_list}>
           {/* Giả sử có một mảng courses chứa thông tin khóa học */}
@@ -71,13 +71,13 @@ function Current() {
               }}
             />
           ))}
-        </div>
-      </div>
+              </div>
+            </div>
 
-      <CarouselProduct />
+            <CarouselProduct />
       <CarouselProduct title="Phổ biến cho lập trình web" />
-      <CourseProductList />
-    </div>
+            <CourseProductList />
+          </div>
   );
 
   return (

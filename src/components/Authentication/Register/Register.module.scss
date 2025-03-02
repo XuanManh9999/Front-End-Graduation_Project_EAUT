@@ -12,6 +12,7 @@
         line-height: 1.2;
         text-align: center;
         letter-spacing: 0;
+        font-size: 30px;
       }
       .form_register__item__submid {
         margin-top: 32px;
@@ -48,10 +49,10 @@
           color: #fff;
         }
         .form_register__item__submid__clause {
-            margin-top: 16px;
-            font-size: 14px;
-            text-align: center;
-            color: #303141;
+          margin-top: 16px;
+          font-size: 14px;
+          text-align: center;
+          color: #303141;
         }
       }
       .form_register__item__orther {
@@ -62,8 +63,8 @@
         font-size: 16px;
         color: #000;
         a {
-            font-size: 16px;
-            color: var(--primary-color);
+          font-size: 16px;
+          color: var(--primary-color);
         }
       }
     }
