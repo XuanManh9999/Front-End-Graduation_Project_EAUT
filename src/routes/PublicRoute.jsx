@@ -5,6 +5,7 @@ import Login from "../components/Authentication/Login";
 import Current from "../components/Authentication/Current";
 import Register from "../components/Authentication/Register";
 import ForgotPassword from "../components/Authentication/ForgotPassword";
+import OverviewCourse from "../components/OverviewCourse";
 
 const publicRoutes = [
   {
@@ -26,6 +27,10 @@ const publicRoutes = [
       {
         path: URL.AUTH.FORGOT_PASSWORD,
         element: <ForgotPassword />,
+      },
+      {
+        path: URL.PUBLIC.COURSE_INFO,
+        element: <OverviewCourse />,
       },
     ],
   },
