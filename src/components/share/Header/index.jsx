@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { FaSearch } from "react-icons/fa";
 import { BsCart3 } from "react-icons/bs";
 import { GrLanguage } from "react-icons/gr";
-import { data, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ModalCustom from "../ModalCustom";
 import { useTranslation } from "react-i18next";
 import { FaRegBell } from "react-icons/fa";
@@ -16,10 +16,47 @@ const detailAuthor = {
     {
       key: "custom",
       label: (
-        <div className={styles.customDropdown}>
-          <ul>
-            <li>Trang cá nhân</li>
-            <li>Đăng xuất</li>
+        <div className={styles.container__detail_author}>
+          <ul
+            style={{
+              padding: 0,
+            }}
+            className={styles.container__detail_author__list_option}>
+            <li className={styles.container__detail_author__option_self}>
+              <img
+                src="https://img-c.udemycdn.com/user/100x100/285978675_5cf5.jpg"
+                alt="avatar"
+              />
+              <div
+                className={
+                  styles.container__detail_author__option_self__content
+                }>
+                <strong
+                  className={
+                    styles.container__detail_author__option_self__content__name
+                  }>
+                  Nguyễn Xuân Mạnh
+                </strong>
+                <span
+                  className={
+                    styles.container__detail_author__option_self__content__email
+                  }>
+                  nguyenxuanmanh2992003@gmail.com
+                </span>
+              </div>
+            </li>
+            <li className={styles.container__detail_author__option}>
+              <Link>Học tập</Link>
+            </li>
+            <li className={styles.container__detail_author__option}>
+              <Link>Lịch sử mua</Link>
+            </li>
+            <li className={styles.container__detail_author__option}>
+              <Link>Ngôn ngữ</Link>
+            </li>
+            <li className={styles.container__detail_author__option}>
+              <Link>Đăng xuất</Link>
+            </li>
           </ul>
         </div>
       ),
@@ -65,7 +102,7 @@ const items = [
 
 function Header() {
   const { t, i18n } = useTranslation();
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [isHovered, setIsHovered] = useState({
     avatar: false,
     bell: false,
@@ -202,8 +239,10 @@ function Header() {
                 onMouseLeave={() => handleMouseLeave("avatar")}>
                 <Dropdown
                   menu={detailAuthor}
+                  overlayClassName="custom-dropdown"
                   className={styles.dropdown__author}
                   placement="bottom"
+                  getPopupContainer={(triggerNode) => triggerNode.parentElement}
                   arrow>
                   <img
                     className={styles.header__item__avatar}

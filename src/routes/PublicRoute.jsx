@@ -25,8 +25,8 @@ const publicRoutes = [
       },
       {
         path: URL.AUTH.FORGOT_PASSWORD,
-        element: <ForgotPassword />
-      }
+        element: <ForgotPassword />,
+      },
     ],
   },
 ];

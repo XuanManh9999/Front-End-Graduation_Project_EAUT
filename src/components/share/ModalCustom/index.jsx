@@ -11,6 +11,9 @@ function ModalCustom({
   handleCancel,
   isShowFooter = null,
   handleOnClickItem,
+  setDataOtpSubmit,
+  handleOnSubmitOTP,
+  dataOtpSubmit,
 }) {
   const [timeLeft, setTimeLeft] = useState(90); // 90s đếm ngược
 
@@ -45,13 +48,28 @@ function ModalCustom({
                 marginTop: "5px",
               }}
               className={styles.modal__otp__input}
+              length={6}
+              autoFocus
+              onChange={(text) =>
+                setDataOtpSubmit((prev) => ({
+                  ...prev,
+                  otp: text,
+                }))
+              }
             />
-            <p className="text-gray-600 text-sm mt-2">
+            <p
+              className="text-gray-600 text-sm mt-2"
+              style={{ marginTop: "5px" }}>
               Mã OTP hết hạn sau:{" "}
               <span className="font-semibold text-red-500">{timeLeft}s</span>
             </p>
             <div className={styles.modal_otp__option}>
-              <Button className={styles.modal__otp__submid}>Xác nhận</Button>
+              <Button
+                className={styles.modal__otp__submid}
+                onClick={handleOnSubmitOTP}
+                loading={dataOtpSubmit.isLoading}>
+                Xác nhận
+              </Button>
             </div>
           </div>
         ) : (
