@@ -1,6 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import publicRoutes from "./PublicRoute";
 import { useEffect } from "react";
+import privateRoutes from "./PrivateRouter";
 
 const PublicRoute = ({ element }) => {
   // const [isLoading, setIsLoading] = useState(true);
@@ -17,11 +18,19 @@ const PublicRoute = ({ element }) => {
   return element;
 };
 
+const PrivateRoute = ({ element }) => {
+  return element;
+};
+
 const AppRoutes = () => {
   const routes = [
     ...publicRoutes.map((route) => ({
       ...route,
       element: <PublicRoute element={route.element} />,
+    })),
+    ...privateRoutes.map((route) => ({
+      ...route,
+      element: <PrivateRoute element={route.element} />,
     })),
   ];
   useEffect(() => {

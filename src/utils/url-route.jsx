@@ -9,7 +9,7 @@ const URL = {
     COURSE_INFO: "/course-info/:idCourse",
   },
   PRIVATE: {
-    HOME: "/admin",
+    HOME: "/learning",
   },
 };
 
