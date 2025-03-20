@@ -44,12 +44,150 @@
   }
   .container_learning__content {
     display: grid;
-    grid-template-columns: 3.5fr auto;
+    grid-template-columns: 3.5fr 1fr;
     .container_learning__data_course {
-      background-color: red;
+      padding-top: 32px;
+      display: flex;
+      justify-content: center;
+      height: calc(100vh - 100px);
+      margin: 0 10px;
+      .container_learning__data_course__container {
+        min-width: 800px;
+        height: 400px;
+      }
+      .container_learning__data_course__title {
+        font-size: 26px;
+        line-height: 1.4;
+        font-weight: 500;
+      }
+      .container_learning__data_course__update_at {
+        font-size: 13px;
+        margin-bottom: 36px;
+        color: #000;
+        opacity: 0.8;
+        display: block;
+      }
+
+      .container_learning__data_course__question {
+        .container_learning__data_course__question__name {
+          color: var(--text-color);
+          font-size: 16px;
+          margin: 16px 0;
+        }
+        .container_learning__data_course__question__data {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          .container_learning__data_course__question__data__item {
+            padding: 12px 16px;
+            font-size: 1.6rem;
+            line-height: 1.4;
+            border-radius: 8px;
+            box-shadow: 8px 0 8px #89acc00a;
+            background-color: #f6f7f9;
+            -webkit-user-select: none;
+            user-select: none;
+            border: 2px solid transparent;
+            transition: ease 0.2s;
+            font-size: 16px;
+            cursor: pointer;
+            &.container_learning__data_course__question__data__item__active {
+              border-color: #0093fc;
+            }
+          }
+        }
+        .container_learning__data_course__question__btn_submid {
+          margin-top: 20px;
+          display: flex;
+          justify-content: end;
+          button {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 8px 16px;
+            min-width: 100px;
+            min-height: 40px;
+            font-size: 16px;
+          }
+        }
+      }
+      .container_learning__data_course__container__result {
+        margin-top: 36px;
+        .container_learning__data_course__container__result__title {
+          font-size: 18px;
+          color: #000;
+          font-weight: 600;
+        }
+        .container_learning__data_course__container__result__desc {
+          margin: 6px 0;
+          font-size: 15px;
+          color: #292929;
+        }
+      }
+
+      // ide code
+      .container_learning__data_course__ide_code {
+        height: 100%;
+        min-width: calc(100vw - 400px);
+        .container_learning__data_course__ide_code__header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          background-color: #e7e9eb;
+          height: 50px;
+          padding: 0 10px;
+          .container_learning__data_course__ide_code__header__left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            .container_learning__data_course__ide_code__header__left_btn {
+              padding: 10px 25px;
+              min-height: 40px;
+              background-color: var(--primary-color);
+              display: flex;
+              align-items: center;
+              .container_learning__data_course__ide_code__header__left_btn__icon_play {
+                font-size: 20px;
+              }
+              span {
+                color: #fff;
+                font-weight: bold;
+                font-size: 16px;
+              }
+            }
+            svg {
+              font-size: 30px;
+              cursor: pointer;
+            }
+          }
+          .container_learning__data_course__ide_code__header__right {
+          }
+        }
+        .container_learning__data_course__ide_code__container {
+          border: 1px solid #ccc;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          column-gap: 8px;
+          background-color: #e7e9eb;
+          .container_learning__data_course__ide_code__container__left {
+            height: 500px;
+            max-height: 500px;
+            overflow: hidden;
+            overflow-y: auto;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background-color: #fff;
+            padding: 4px;
+          }
+          .container_learning__data_course__ide_code__container__right {
+            height: 500px;
+            max-height: 500px;
+            overflow-y: auto;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          }
+        }
+      }
     }
     .container_learning__section {
-      min-width: 350px;
       height: calc(100vh - 72px);
       border-left: 1px solid #ccc;
       .container_learning__section__header {
@@ -108,8 +246,8 @@
             }
             input {
               cursor: pointer;
-              width: 20px;
-              height: 20px;
+              min-width: 22px;
+              height: 25px;
               accent-color: rgb(11 148 201);
               transition: all 0.3s ease;
               border: 1px solid #d1d2e0;
@@ -125,6 +263,7 @@
                 display: flex;
                 align-items: center;
                 gap: 5px;
+
                 svg {
                   width: 15px;
                   height: 15px;
@@ -137,6 +276,31 @@
             }
           }
         }
+      }
+    }
+
+    .container_learning__content__course_more {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px;
+      right: 10px;
+      top: 15%;
+      cursor: pointer;
+      transform: translateX(170px);
+      border: 1px solid #9194ac;
+      background-color: var(--primary-color);
+      transition: all ease 0.3s;
+      border-radius: 5px;
+      border: none !important;
+      outline: none;
+      svg {
+        font-size: 20px;
+        color: #fff;
+      }
+      p {
+        color: #fff;
       }
     }
   }

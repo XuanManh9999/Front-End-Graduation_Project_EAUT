@@ -3,291 +3,67 @@ import { Progress, Tooltip } from "antd";
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import styles from "./Learning.module.scss";
-import { Collapse } from "antd";
+import { Collapse, Button } from "antd";
 import { RightOutlined } from "@ant-design/icons";
-import { FaTv } from "react-icons/fa";
+import { FaTv, FaCode } from "react-icons/fa";
 import classNames from "classnames";
-const items = [
+import { FaArrowLeftLong, FaRegCircleQuestion, FaPlay } from "react-icons/fa6";
+import { CiMenuBurger } from "react-icons/ci";
+import CodeBlock from "../share/CodeBlock";
+import CodeEditor from "../share/CodeEditor";
+import { runCode } from "../../services/learning";
+import QuestionListExam from "../share/QuestionListExam";
+const sections = [
   {
-    key: "1",
-    label: (
-      <div className={styles.container_learning__section__lesson__title}>
-        <strong
-          className={styles.container_learning__section__lesson__title_part}>
-          Phần 1: Giới thiệu về Python và các cú pháp cơ bản
-        </strong>
-        <div className={styles.container_learning__section__lesson__title_more}>
-          <p
-            className={
-              styles.container_learning__section__lesson__title_quantity_lesson
-            }>
-            3/3
-          </p>{" "}
-          |{" "}
-          <p className={styles.container_learning__section__lesson__title_time}>
-            1 giờ 20 phút
-          </p>
-        </div>
-      </div>
-    ),
-    children: (
-      <div className={styles.container_learning__section__lesson__lecture}>
-        <input type="checkbox" name="" id="" />
-        <div
-          className={
-            styles.container_learning__section__lesson__lecture__content
-          }>
-          <p
-            className={
-              styles.container_learning__section__lesson__lecture__name
-            }>
-            Bài 1: Giới thiệu về Python
-          </p>
-          <div
-            className={
-              styles.container_learning__section__lesson__lecture__content__time
-            }>
-            <FaTv />
-            <p>1 giờ 20 phút</p>
-          </div>
-        </div>
-      </div>
-    ),
+    id: 1,
+    title: "Phần 1: Giới thiệu Python",
+    lessons: [
+      {
+        id: 101,
+        name: "Bài 1: Giới thiệu Python",
+        duration: "10 phút",
+        video: 1,
+        code: 0,
+        quiz: 0,
+      },
+      {
+        id: 102,
+        name: "Bài 2: Trắc nghiệm về kiểu dữ liệu",
+        duration: "15 phút",
+        video: 0,
+        code: 0,
+        quiz: 1,
+      },
+      {
+        id: 103,
+        name: "Bài 3: Thực hành về khai báo biến",
+        duration: "15 phút",
+        video: 0,
+        code: 1,
+        quiz: 0,
+      },
+    ],
   },
   {
-    key: "2",
-    label: (
-      <div className={styles.container_learning__section__lesson__title}>
-        <strong
-          className={styles.container_learning__section__lesson__title_part}>
-          Phần 1: Giới thiệu về Python và các cú pháp cơ bản
-        </strong>
-        <div className={styles.container_learning__section__lesson__title_more}>
-          <p
-            className={
-              styles.container_learning__section__lesson__title_quantity_lesson
-            }>
-            3/3
-          </p>{" "}
-          |{" "}
-          <p className={styles.container_learning__section__lesson__title_time}>
-            1 giờ 20 phút
-          </p>
-        </div>
-      </div>
-    ),
-    children: (
-      <div className={styles.container_learning__section__lesson__lecture}>
-        <input type="checkbox" name="" id="" />
-        <div
-          className={
-            styles.container_learning__section__lesson__lecture__content
-          }>
-          <p
-            className={
-              styles.container_learning__section__lesson__lecture__name
-            }>
-            Bài 1: Giới thiệu về Python
-          </p>
-          <div
-            className={
-              styles.container_learning__section__lesson__lecture__content__time
-            }>
-            <FaTv />
-            <p>1 giờ 20 phút</p>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    key: "3",
-    label: (
-      <div className={styles.container_learning__section__lesson__title}>
-        <strong
-          className={styles.container_learning__section__lesson__title_part}>
-          Phần 1: Giới thiệu về Python và các cú pháp cơ bản
-        </strong>
-        <div className={styles.container_learning__section__lesson__title_more}>
-          <p
-            className={
-              styles.container_learning__section__lesson__title_quantity_lesson
-            }>
-            3/3
-          </p>{" "}
-          |{" "}
-          <p className={styles.container_learning__section__lesson__title_time}>
-            1 giờ 20 phút
-          </p>
-        </div>
-      </div>
-    ),
-    children: (
-      <div className={styles.container_learning__section__lesson__lecture}>
-        <input type="checkbox" name="" id="" />
-        <div
-          className={
-            styles.container_learning__section__lesson__lecture__content
-          }>
-          <p
-            className={
-              styles.container_learning__section__lesson__lecture__name
-            }>
-            Bài 1: Giới thiệu về Python
-          </p>
-          <div
-            className={
-              styles.container_learning__section__lesson__lecture__content__time
-            }>
-            <FaTv />
-            <p>1 giờ 20 phút</p>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    key: "1",
-    label: (
-      <div className={styles.container_learning__section__lesson__title}>
-        <strong
-          className={styles.container_learning__section__lesson__title_part}>
-          Phần 1: Giới thiệu về Python và các cú pháp cơ bản
-        </strong>
-        <div className={styles.container_learning__section__lesson__title_more}>
-          <p
-            className={
-              styles.container_learning__section__lesson__title_quantity_lesson
-            }>
-            3/3
-          </p>{" "}
-          |{" "}
-          <p className={styles.container_learning__section__lesson__title_time}>
-            1 giờ 20 phút
-          </p>
-        </div>
-      </div>
-    ),
-    children: (
-      <div className={styles.container_learning__section__lesson__lecture}>
-        <input type="checkbox" name="" id="" />
-        <div
-          className={
-            styles.container_learning__section__lesson__lecture__content
-          }>
-          <p
-            className={
-              styles.container_learning__section__lesson__lecture__name
-            }>
-            Bài 1: Giới thiệu về Python
-          </p>
-          <div
-            className={
-              styles.container_learning__section__lesson__lecture__content__time
-            }>
-            <FaTv />
-            <p>1 giờ 20 phút</p>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    key: "2",
-    label: (
-      <div className={styles.container_learning__section__lesson__title}>
-        <strong
-          className={styles.container_learning__section__lesson__title_part}>
-          Phần 1: Giới thiệu về Python và các cú pháp cơ bản
-        </strong>
-        <div className={styles.container_learning__section__lesson__title_more}>
-          <p
-            className={
-              styles.container_learning__section__lesson__title_quantity_lesson
-            }>
-            3/3
-          </p>{" "}
-          |{" "}
-          <p className={styles.container_learning__section__lesson__title_time}>
-            1 giờ 20 phút
-          </p>
-        </div>
-      </div>
-    ),
-    children: (
-      <div className={styles.container_learning__section__lesson__lecture}>
-        <input type="checkbox" name="" id="" />
-        <div
-          className={
-            styles.container_learning__section__lesson__lecture__content
-          }>
-          <p
-            className={
-              styles.container_learning__section__lesson__lecture__name
-            }>
-            Bài 1: Giới thiệu về Python
-          </p>
-          <div
-            className={
-              styles.container_learning__section__lesson__lecture__content__time
-            }>
-            <FaTv />
-            <p>1 giờ 20 phút</p>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    key: "3",
-    label: (
-      <div className={styles.container_learning__section__lesson__title}>
-        <strong
-          className={styles.container_learning__section__lesson__title_part}>
-          Phần 1: Giới thiệu về Python và các cú pháp cơ bản
-        </strong>
-        <div className={styles.container_learning__section__lesson__title_more}>
-          <p
-            className={
-              styles.container_learning__section__lesson__title_quantity_lesson
-            }>
-            3/3
-          </p>{" "}
-          |{" "}
-          <p className={styles.container_learning__section__lesson__title_time}>
-            1 giờ 20 phút
-          </p>
-        </div>
-      </div>
-    ),
-    children: (
-      <div className={styles.container_learning__section__lesson__lecture}>
-        <input type="checkbox" name="" id="" />
-        <div
-          className={
-            styles.container_learning__section__lesson__lecture__content
-          }>
-          <p
-            className={
-              styles.container_learning__section__lesson__lecture__name
-            }>
-            Bài 1: Giới thiệu về Python
-          </p>
-          <div
-            className={
-              styles.container_learning__section__lesson__lecture__content__time
-            }>
-            <FaTv />
-            <p>1 giờ 20 phút</p>
-          </div>
-        </div>
-      </div>
-    ),
+    id: 2,
+    title: "Phần 2: Cấu trúc điều khiển",
+    lessons: [{ id: 201, name: "Câu lệnh if else", duration: "8 phút" }],
   },
 ];
 
 function Learning() {
+  const [configShowHide, setConfigShowHide] = useState({
+    activeCloseLesson: false,
+    isShowQuestion: false,
+    activeLesson: null,
+  });
+
   const [activeCloseLesson, setActiveCloseLesson] = useState(false);
+  const [isShowQuestion, setIsShowQuestion] = useState(false);
+  const [activeLesson, setActiveLesson] = useState(null);
+  const [code, setCode] = useState("");
+  const [languageActive, setLanguageActive] = useState("python");
+  const [responseCode, setResponseCode] = useState(null);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -303,23 +79,47 @@ function Learning() {
   const handleCloseCourseLesson = () => {
     if (!activeCloseLesson) {
       document
-        .querySelector(".container_learning__section")
-        .setAttribute("style", "min-width: 0;");
-      document
-        .querySelector(".view_video")
-        .setAttribute("style", "width: 100%;");
+        .querySelector(".config_layout")
+        ?.setAttribute("style", "display: unset;");
     } else {
       document
         .querySelector(".config_layout")
-        .setAttribute("style", "grid-template-columns: 3.5fr 1fr;");
+        ?.setAttribute("style", "display: grid;");
+      document.querySelector(".config_layout");
     }
     setActiveCloseLesson(!activeCloseLesson);
+  };
+
+  const handleOnMouseEnter = () => {
+    document
+      .querySelector(".container_learning__content__course_more__active")
+      .setAttribute("style", "transform: translateX(10px);");
+  };
+
+  const handleOnMouseLeave = () => {
+    document
+      .querySelector(".container_learning__content__course_more__active")
+      .setAttribute("style", "transform: translateX(170px);");
+  };
+
+  const handleViewLessonActive = (id) => {
+    setActiveLesson(id);
+  };
+
+  const handleSubmitCode = async () => {
+    const response = await runCode(languageActive, code);
+
+    setResponseCode(
+      response?.run?.stdout == ""
+        ? response?.run?.stderr
+        : response?.run?.stdout
+    );
   };
 
   return (
     <main className={styles.container_learning}>
       <header className={styles.container_learning__header}>
-        <div className={styles.container_learning__header__left}>
+        <div className={classNames(styles.container_learning__header__left)}>
           <Link to="/">
             <img
               className={styles.container_learning__header__left__img}
@@ -353,18 +153,165 @@ function Learning() {
           styles.container_learning__content,
           "config_layout"
         )}>
-        <div
-          className={classNames(
-            styles.container_learning__data_course,
-            "view_video"
-          )}></div>
+        {/* left */}
+        <div className={classNames(styles.container_learning__data_course)}>
+          {isShowQuestion && (
+            <div
+              className={classNames(
+                styles.container_learning__data_course__container
+              )}>
+              <h1
+                className={classNames(
+                  styles.container_learning__data_course__title
+                )}>
+                Ôn tập hiển thị ảnh dự phòng khi ảnh chính lỗi
+              </h1>
+              <span
+                className={classNames(
+                  styles.container_learning__data_course__update_at
+                )}>
+                Cập nhật tháng 6 năm 2022
+              </span>
+              <div
+                className={classNames(
+                  styles.container_learning__data_course__question
+                )}>
+                <p
+                  className={classNames(
+                    styles.container_learning__data_course__question__name
+                  )}>
+                  Nên dùng thuộc tính nào để hiển thị ảnh dự phòng khi ảnh chính
+                  bị lỗi?
+                </p>
+
+                <div
+                  className={classNames(
+                    styles.container_learning__data_course__question__data
+                  )}>
+                  <div
+                    className={classNames(
+                      styles.container_learning__data_course__question__data__item,
+                      styles.container_learning__data_course__question__data__item__active
+                    )}>
+                    onClick
+                  </div>
+                  <div
+                    className={classNames(
+                      styles.container_learning__data_course__question__data__item
+                    )}>
+                    onError
+                  </div>
+                  <div
+                    className={classNames(
+                      styles.container_learning__data_course__question__data__item
+                    )}>
+                    onKeyDown
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    styles.container_learning__data_course__question__btn_submid
+                  )}>
+                  <Button>Trả lời</Button>
+                </div>
+              </div>
+              <div
+                className={classNames(
+                  styles.container_learning__data_course__container__result
+                )}>
+                <h2
+                  className={classNames(
+                    styles.container_learning__data_course__container__result__title
+                  )}>
+                  Giải thích
+                </h2>
+                <p
+                  className={classNames(
+                    styles.container_learning__data_course__container__result__desc
+                  )}>
+                  Khi sử dụng onerror, nội dung javascript trong onerror sẽ được
+                  thực thi khi ảnh bị lỗi.
+                </p>
+              </div>
+            </div>
+          )}
+          <div
+            className={classNames(
+              styles.container_learning__data_course__ide_code
+            )}>
+            <QuestionListExam />
+            <div
+              className={classNames(
+                styles.container_learning__data_course__ide_code__header
+              )}>
+              <div
+                className={classNames(
+                  styles.container_learning__data_course__ide_code__header__left
+                )}>
+                <CiMenuBurger
+                  className={classNames(
+                    styles.container_learning__data_course__ide_code__header__left___menu
+                  )}
+                />
+                <Button
+                  className={classNames(
+                    styles.container_learning__data_course__ide_code__header__left_btn
+                  )}
+                  icon={
+                    <FaPlay
+                      className={classNames(
+                        styles.container_learning__data_course__ide_code__header__left_btn__icon_play
+                      )}
+                    />
+                  }
+                  onClick={handleSubmitCode}>
+                  <span>Chạy code</span>
+                </Button>
+              </div>
+              <div
+                className={classNames(
+                  styles.container_learning__data_course__ide_code__header__right
+                )}>
+                <p>Result Size: 731 x 518</p>
+              </div>
+            </div>
+            <div
+              className={classNames(
+                styles.container_learning__data_course__ide_code__container
+              )}>
+              <div
+                className={classNames(
+                  styles.container_learning__data_course__ide_code__container__left
+                )}>
+                <CodeEditor
+                  code={code}
+                  setCode={setCode}
+                  languageActive={languageActive}
+                  setLanguageActive={setLanguageActive}
+                />
+              </div>
+              <div
+                className={classNames(
+                  styles.container_learning__data_course__ide_code__container__right
+                )}>
+                <CodeBlock code={responseCode} />
+              </div>
+            </div>
+          </div>
+        </div>
 
         {activeCloseLesson ? (
-          <button
-            style={{ position: "absolute", right: "10px" }}
-            onClick={handleCloseCourseLesson}>
-            Mo
-          </button>
+          <div
+            className={classNames(
+              styles.container_learning__content__course_more,
+              "container_learning__content__course_more__active"
+            )}
+            onClick={handleCloseCourseLesson}
+            onMouseEnter={handleOnMouseEnter}
+            onMouseLeave={handleOnMouseLeave}>
+            <FaArrowLeftLong />
+            <p>Nội dung khóa học</p>
+          </div>
         ) : (
           <div
             className={classNames(
@@ -380,7 +327,6 @@ function Learning() {
             <div className={styles.container_learning__content__wrap}>
               <Collapse
                 className={styles.container_learning__section__lesson}
-                items={items}
                 defaultActiveKey={["1"]}
                 onChange={onChange}
                 expandIconPosition={"right"}
@@ -389,8 +335,115 @@ function Learning() {
                     style={{ fontSize: "16px", marginTop: "5px" }}
                     rotate={isActive ? 90 : 0}
                   />
-                )}
-              />
+                )}>
+                {sections.map((section) => (
+                  <Collapse.Panel
+                    key={section.id}
+                    header={
+                      <div
+                        className={
+                          styles.container_learning__section__lesson__title
+                        }>
+                        <strong
+                          className={
+                            styles.container_learning__section__lesson__title_part
+                          }>
+                          {section.title}
+                        </strong>
+                        <div
+                          className={
+                            styles.container_learning__section__lesson__title_more
+                          }>
+                          <p
+                            className={
+                              styles.container_learning__section__lesson__title_quantity_lesson
+                            }>
+                            3/3
+                          </p>{" "}
+                          |{" "}
+                          <p
+                            className={
+                              styles.container_learning__section__lesson__title_time
+                            }>
+                            1 giờ 20 phút
+                          </p>
+                        </div>
+                      </div>
+                    }>
+                    {section.lessons.map((lesson) => (
+                      <>
+                        <div
+                          className={
+                            styles.container_learning__section__lesson__lecture
+                          }
+                          style={{
+                            backgroundColor:
+                              activeLesson === lesson.id
+                                ? "var(--primary-color)"
+                                : "",
+                            color: activeLesson === lesson.id ? "#fff" : "",
+                          }}>
+                          <input
+                            className={
+                              styles.container_learning__section__lesson__lecture__input
+                            }
+                            type="checkbox"
+                            name=""
+                            id=""
+                          />
+                          <div
+                            className={
+                              styles.container_learning__section__lesson__lecture__content
+                            }
+                            onClick={() => handleViewLessonActive(lesson.id)}>
+                            <p
+                              className={
+                                styles.container_learning__section__lesson__lecture__name
+                              }
+                              style={{
+                                color: activeLesson === lesson.id ? "#fff" : "",
+                              }}>
+                              {lesson.name}
+                            </p>
+                            <div
+                              className={
+                                styles.container_learning__section__lesson__lecture__content__time
+                              }>
+                              {lesson.video ? (
+                                <FaTv
+                                  className={
+                                    styles.container_learning__section__lesson__lecture__content__time__icon
+                                  }
+                                />
+                              ) : lesson.code ? (
+                                <FaCode
+                                  className={
+                                    styles.container_learning__section__lesson__lecture__content__time__icon
+                                  }
+                                />
+                              ) : (
+                                <FaRegCircleQuestion
+                                  className={
+                                    styles.container_learning__section__lesson__lecture__content__time__icon
+                                  }
+                                />
+                              )}
+
+                              <p
+                                style={{
+                                  color:
+                                    activeLesson === lesson.id ? "#fff" : "",
+                                }}>
+                                {lesson.duration}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    ))}
+                  </Collapse.Panel>
+                ))}
+              </Collapse>
             </div>
           </div>
         )}

@@ -1,5 +1,4 @@
 import { apiUser } from "../config/User";
-import axios from "axios";
 export const apiRegister = async (dataRegister) => {
   try {
     const response = await apiUser.post("/auth/register", dataRegister);
@@ -53,17 +52,6 @@ export const apiLogin = async (dataLogin) => {
 export const oauthLogin = async (dataLogin) => {
   try {
     const response = await apiUser.post("/auth/oauth/login", dataLogin);
-    return response?.data;
-  } catch (error) {
-    return error?.response?.data;
-  }
-};
-
-export const handleTestCallApi = async () => {
-  try {
-    const response = await axios.get(
-      "http://13.229.236.236:8000/api/v1/type_number/alls"
-    );
     return response?.data;
   } catch (error) {
     return error?.response?.data;

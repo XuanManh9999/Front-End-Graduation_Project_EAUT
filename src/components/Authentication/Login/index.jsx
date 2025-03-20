@@ -9,7 +9,6 @@ import URL from "../../../utils/url-route";
 import { showToast } from "../../../utils/toast";
 import { apiLogin, oauthLogin } from "../../../services/auth";
 import Cookies from "js-cookie";
-import { handleTestCallApi } from "../../../services/auth";
 import {
   GoogleAuthProvider,
   signInWithPopup,
@@ -120,20 +119,6 @@ function Login() {
     }
     setIsLoading(false);
   };
-
-  useEffect(() => {
-    const fetching = async () => {
-      const reponse = await handleTestCallApi();
-      console.log(reponse);
-    };
-    fetching();
-  }, []);
-
-
-
-  const handleTestCallApi = async () => {
-  
-  }
 
   return (
     <div className={styles.login__form}>
