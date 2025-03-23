@@ -91,8 +91,11 @@
             transition: ease 0.2s;
             font-size: 16px;
             cursor: pointer;
-            &.container_learning__data_course__question__data__item__active {
-              border-color: #0093fc;
+            &.question_sucscess {
+              border: 2px solid var(--success);
+            }
+            &.question_error {
+              border: 2px solid var(--error);
             }
           }
         }
@@ -127,7 +130,9 @@
       // ide code
       .container_learning__data_course__ide_code {
         height: 100%;
-        min-width: calc(100vw - 400px);
+        min-width: calc(100vw - 350px);
+        overflow: hidden;
+        overflow-y: auto;
         .container_learning__data_course__ide_code__header {
           display: flex;
           align-items: center;

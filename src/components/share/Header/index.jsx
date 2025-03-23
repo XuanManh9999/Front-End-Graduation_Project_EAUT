@@ -10,103 +10,53 @@ import ModalCustom from "../ModalCustom";
 import { useTranslation } from "react-i18next";
 import { FaRegBell } from "react-icons/fa";
 import DrawerCustom from "../DrawerCustom";
-
-const detailAuthor = {
-  items: [
-    {
-      key: "custom",
-      label: (
-        <div className={styles.container__detail_author}>
-          <ul
-            style={{
-              padding: 0,
-            }}
-            className={styles.container__detail_author__list_option}>
-            <li className={styles.container__detail_author__option_self}>
-              <img
-                src="https://img-c.udemycdn.com/user/100x100/285978675_5cf5.jpg"
-                alt="avatar"
-              />
-              <div
-                className={
-                  styles.container__detail_author__option_self__content
-                }>
-                <strong
-                  className={
-                    styles.container__detail_author__option_self__content__name
-                  }>
-                  Nguyễn Xuân Mạnh
-                </strong>
-                <span
-                  className={
-                    styles.container__detail_author__option_self__content__email
-                  }>
-                  nguyenxuanmanh2992003@gmail.com
-                </span>
-              </div>
-            </li>
-            <li className={styles.container__detail_author__option}>
-              <Link>Học tập</Link>
-            </li>
-            <li className={styles.container__detail_author__option}>
-              <Link>Lịch sử mua</Link>
-            </li>
-            <li className={styles.container__detail_author__option}>
-              <Link>Ngôn ngữ</Link>
-            </li>
-            <li className={styles.container__detail_author__option}>
-              <Link>Đăng xuất</Link>
-            </li>
-          </ul>
-        </div>
-      ),
-    },
-  ],
-};
-
-const items = [
-  {
-    key: "1",
-    label: (
-      <div
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com">
-        1st menu item
-      </div>
-    ),
-  },
-  {
-    key: "2",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com">
-        2nd menu item
-      </a>
-    ),
-  },
-  {
-    key: "3",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.luohanacademy.com">
-        3rd menu item
-      </a>
-    ),
-  },
-];
+import "./config-css-header.css";
+import CustomModalFunction from "../MocalFunction";
 
 function Header() {
   const { t, i18n } = useTranslation();
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [isHovered, setIsHovered] = useState({
     avatar: false,
     bell: false,
   }); // state để theo dõi trạng thái hover
+
+  const [dataInputModal, setDataInputModal] = useState({});
+  const [configModal, setConfigModal] = useState({
+    titleModal: "Cập nhật thông tin",
+    isOpenModal: false,
+    fields: [
+      {
+        name: "username",
+        type: "input",
+        label: "Username",
+        placeholder: "Nhập username của bạn",
+        rules: [{ required: true, message: "Vui lòng nhập username!" }],
+        onChange: (event) => {
+          const { name, value } = event.target;
+          setDataInputModal((prev) => ({
+            ...prev,
+            [name]: value,
+          }));
+        },
+      },
+      {
+        name: "description",
+        type: "textarea",
+        label: "Description",
+        placeholder: "Nhập mô tả chi tiết",
+        rules: [{ required: true, message: "Vui lòng nhập mô tả!" }],
+        rows: 6,
+        onChange: (event) => {
+          const { name, value } = event.target;
+          setDataInputModal((prev) => ({
+            ...prev,
+            [name]: value,
+          }));
+        },
+      },
+    ],
+  });
 
   const [isCart, setIsCart] = useState({
     title: "Giỏ hàng",
@@ -168,6 +118,25 @@ function Header() {
     }));
   };
 
+  const handleSetting = () => {
+    setConfigModal((prev) => ({
+      ...prev,
+      isOpenModal: true,
+    }));
+  };
+
+  const handleCancel = () => {
+    setConfigModal((prev) => ({
+      ...prev,
+      isOpenModal: false,
+    }));
+  };
+  const handleOnSubmit = (event) => {
+    console.log("onsubmit", event);
+  };
+
+  console.log("Xuan manh check dataInputModal", dataInputModal);
+
   return (
     <>
       <header className={styles.header}>
@@ -218,27 +187,100 @@ function Header() {
                 className={styles.header__item}
                 onMouseEnter={() => handleMouseEnter("bell")}
                 onMouseLeave={() => handleMouseLeave("bell")}>
-                <Dropdown
-                  menu={{
-                    items,
-                  }}
-                  placement="bottom"
-                  arrow>
-                  <Button
-                    className={styles.btn_cart}
-                    icon={
-                      <Badge count={0} showZero>
-                        <FaRegBell className={styles.header__item__icon_cart} />
-                      </Badge>
-                    }></Button>
-                </Dropdown>
+                <Button
+                  className={styles.btn_cart}
+                  icon={
+                    <Badge count={0} showZero>
+                      <FaRegBell className={styles.header__item__icon_cart} />
+                    </Badge>
+                  }></Button>
               </li>
               <li
                 className={styles.header__item}
                 onMouseEnter={() => handleMouseEnter("avatar")}
                 onMouseLeave={() => handleMouseLeave("avatar")}>
                 <Dropdown
-                  menu={detailAuthor}
+                  menu={{
+                    items: [
+                      {
+                        key: "custom",
+                        label: (
+                          <div className={styles.container__detail_author}>
+                            <ul
+                              style={{ padding: 0 }}
+                              className={
+                                styles.container__detail_author__list_option
+                              }>
+                              <li
+                                key="profile"
+                                className={
+                                  styles.container__detail_author__option_self
+                                }>
+                                <img
+                                  src="https://img-c.udemycdn.com/user/100x100/285978675_5cf5.jpg"
+                                  alt="avatar"
+                                />
+                                <div
+                                  className={
+                                    styles.container__detail_author__option_self__content
+                                  }>
+                                  <strong
+                                    className={
+                                      styles.container__detail_author__option_self__content__name
+                                    }>
+                                    Nguyễn Xuân Mạnh
+                                  </strong>
+                                  <span
+                                    className={
+                                      styles.container__detail_author__option_self__content__email
+                                    }>
+                                    nguyenxuanmanh2992003@gmail.com
+                                  </span>
+                                </div>
+                              </li>
+                              <li
+                                key="learning"
+                                className={
+                                  styles.container__detail_author__option
+                                }>
+                                <Link>Học tập</Link>
+                              </li>
+                              <li
+                                key="purchase-history"
+                                className={
+                                  styles.container__detail_author__option
+                                }>
+                                <Link>Lịch sử mua</Link>
+                              </li>
+                              <li
+                                key="language"
+                                onClick={handleChangeLanguage}
+                                className={
+                                  styles.container__detail_author__option
+                                }>
+                                <Link>Ngôn ngữ</Link>
+                              </li>
+                              <li
+                                key="setting"
+                                className={
+                                  styles.container__detail_author__option
+                                }
+                                onClick={handleSetting}>
+                                <Link>Cập nhật thông tin</Link>
+                              </li>
+                              <li
+                                key="logout"
+                                className={
+                                  styles.container__detail_author__option
+                                }>
+                                <Link>Đăng xuất</Link>
+                              </li>
+                            </ul>
+                          </div>
+                        ),
+                      },
+                    ],
+                  }}
                   overlayClassName="custom-dropdown"
                   className={styles.dropdown__author}
                   placement="bottom"
@@ -297,6 +339,13 @@ function Header() {
         title={isCart.title}
         open={isCart.isShow}
         onClose={handleCloseDrawerCart}
+      />
+      <CustomModalFunction
+        titleModal={configModal.titleModal}
+        visible={configModal.isOpenModal}
+        onCancel={handleCancel}
+        onSubmit={handleOnSubmit}
+        fields={configModal.fields}
       />
     </>
   );

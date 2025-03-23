@@ -10,4 +10,6 @@
   --github: #181717;
   --google: linear-gradient(45deg, #4285f4, #ea4335, #fbbc05, #34a853);
   --text-color: #303141;
+  --success: #0093fc;
+  --error: #ff0000;
 }

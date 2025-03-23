@@ -13,6 +13,8 @@ import CodeBlock from "../share/CodeBlock";
 import CodeEditor from "../share/CodeEditor";
 import { runCode } from "../../services/learning";
 import QuestionListExam from "../share/QuestionListExam";
+import { fireConfetti } from "../../utils/confetti";
+
 const sections = [
   {
     id: 1,
@@ -56,11 +58,13 @@ function Learning() {
     activeCloseLesson: false,
     isShowQuestion: false,
     activeLesson: null,
+    activeLessonCode: true,
   });
 
-  const [activeCloseLesson, setActiveCloseLesson] = useState(false);
-  const [isShowQuestion, setIsShowQuestion] = useState(false);
-  const [activeLesson, setActiveLesson] = useState(null);
+  const [configLoadding, setConfigLoadding] = useState({
+    isLoaddingRunCode: false,
+  });
+
   const [code, setCode] = useState("");
   const [languageActive, setLanguageActive] = useState("python");
   const [responseCode, setResponseCode] = useState(null);
@@ -77,7 +81,7 @@ function Learning() {
   };
 
   const handleCloseCourseLesson = () => {
-    if (!activeCloseLesson) {
+    if (!configShowHide.activeCloseLesson) {
       document
         .querySelector(".config_layout")
         ?.setAttribute("style", "display: unset;");
@@ -87,7 +91,11 @@ function Learning() {
         ?.setAttribute("style", "display: grid;");
       document.querySelector(".config_layout");
     }
-    setActiveCloseLesson(!activeCloseLesson);
+
+    setConfigShowHide((prev) => ({
+      ...prev,
+      activeCloseLesson: !configShowHide.activeCloseLesson,
+    }));
   };
 
   const handleOnMouseEnter = () => {
@@ -103,17 +111,31 @@ function Learning() {
   };
 
   const handleViewLessonActive = (id) => {
-    setActiveLesson(id);
+    setConfigShowHide((prev) => ({
+      ...prev,
+      activeLesson: id,
+    }));
   };
 
   const handleSubmitCode = async () => {
+    setConfigLoadding((prev) => ({
+      ...prev,
+      isLoaddingRunCode: true,
+    }));
     const response = await runCode(languageActive, code);
-
+    setConfigLoadding((prev) => ({
+      ...prev,
+      isLoaddingRunCode: false,
+    }));
     setResponseCode(
       response?.run?.stdout == ""
         ? response?.run?.stderr
         : response?.run?.stdout
     );
+  };
+
+  const handleSubmidQuestion = () => {
+    fireConfetti();
   };
 
   return (
@@ -143,6 +165,8 @@ function Learning() {
               size={55}
               type="circle"
               percent={60}
+              strokeColor="var(--primary-color)"
+              strokeWidth={12}
               className={styles.container_learning__header__right__progress}
             />
           </Tooltip>
@@ -155,7 +179,7 @@ function Learning() {
         )}>
         {/* left */}
         <div className={classNames(styles.container_learning__data_course)}>
-          {isShowQuestion && (
+          {configShowHide.isShowQuestion && (
             <div
               className={classNames(
                 styles.container_learning__data_course__container
@@ -191,13 +215,14 @@ function Learning() {
                   <div
                     className={classNames(
                       styles.container_learning__data_course__question__data__item,
-                      styles.container_learning__data_course__question__data__item__active
+                      styles.question_sucscess
                     )}>
                     onClick
                   </div>
                   <div
                     className={classNames(
-                      styles.container_learning__data_course__question__data__item
+                      styles.container_learning__data_course__question__data__item,
+                      styles.question_error
                     )}>
                     onError
                   </div>
@@ -212,7 +237,7 @@ function Learning() {
                   className={classNames(
                     styles.container_learning__data_course__question__btn_submid
                   )}>
-                  <Button>Trả lời</Button>
+                  <Button onClick={handleSubmidQuestion}>Trả lời</Button>
                 </div>
               </div>
               <div
@@ -235,72 +260,76 @@ function Learning() {
               </div>
             </div>
           )}
-          <div
-            className={classNames(
-              styles.container_learning__data_course__ide_code
-            )}>
-            <QuestionListExam />
+
+          {configShowHide.activeLessonCode && (
             <div
               className={classNames(
-                styles.container_learning__data_course__ide_code__header
+                styles.container_learning__data_course__ide_code
               )}>
+              <QuestionListExam />
               <div
                 className={classNames(
-                  styles.container_learning__data_course__ide_code__header__left
+                  styles.container_learning__data_course__ide_code__header
                 )}>
-                <CiMenuBurger
+                <div
                   className={classNames(
-                    styles.container_learning__data_course__ide_code__header__left___menu
-                  )}
-                />
-                <Button
+                    styles.container_learning__data_course__ide_code__header__left
+                  )}>
+                  <CiMenuBurger
+                    className={classNames(
+                      styles.container_learning__data_course__ide_code__header__left___menu
+                    )}
+                  />
+                  <Button
+                    loading={configLoadding.isLoaddingRunCode}
+                    className={classNames(
+                      styles.container_learning__data_course__ide_code__header__left_btn
+                    )}
+                    icon={
+                      <FaPlay
+                        className={classNames(
+                          styles.container_learning__data_course__ide_code__header__left_btn__icon_play
+                        )}
+                      />
+                    }
+                    onClick={handleSubmitCode}>
+                    <span>Chạy code</span>
+                  </Button>
+                </div>
+                <div
                   className={classNames(
-                    styles.container_learning__data_course__ide_code__header__left_btn
-                  )}
-                  icon={
-                    <FaPlay
-                      className={classNames(
-                        styles.container_learning__data_course__ide_code__header__left_btn__icon_play
-                      )}
-                    />
-                  }
-                  onClick={handleSubmitCode}>
-                  <span>Chạy code</span>
-                </Button>
+                    styles.container_learning__data_course__ide_code__header__right
+                  )}>
+                  <p>Result Size: 731 x 518</p>
+                </div>
               </div>
               <div
                 className={classNames(
-                  styles.container_learning__data_course__ide_code__header__right
+                  styles.container_learning__data_course__ide_code__container
                 )}>
-                <p>Result Size: 731 x 518</p>
+                <div
+                  className={classNames(
+                    styles.container_learning__data_course__ide_code__container__left
+                  )}>
+                  <CodeEditor
+                    code={code}
+                    setCode={setCode}
+                    languageActive={languageActive}
+                    setLanguageActive={setLanguageActive}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    styles.container_learning__data_course__ide_code__container__right
+                  )}>
+                  <CodeBlock code={responseCode} />
+                </div>
               </div>
             </div>
-            <div
-              className={classNames(
-                styles.container_learning__data_course__ide_code__container
-              )}>
-              <div
-                className={classNames(
-                  styles.container_learning__data_course__ide_code__container__left
-                )}>
-                <CodeEditor
-                  code={code}
-                  setCode={setCode}
-                  languageActive={languageActive}
-                  setLanguageActive={setLanguageActive}
-                />
-              </div>
-              <div
-                className={classNames(
-                  styles.container_learning__data_course__ide_code__container__right
-                )}>
-                <CodeBlock code={responseCode} />
-              </div>
-            </div>
-          </div>
+          )}
         </div>
 
-        {activeCloseLesson ? (
+        {configShowHide.activeCloseLesson ? (
           <div
             className={classNames(
               styles.container_learning__content__course_more,
@@ -378,10 +407,13 @@ function Learning() {
                           }
                           style={{
                             backgroundColor:
-                              activeLesson === lesson.id
+                              configShowHide.activeLesson === lesson.id
                                 ? "var(--primary-color)"
                                 : "",
-                            color: activeLesson === lesson.id ? "#fff" : "",
+                            color:
+                              configShowHide.activeLesson === lesson.id
+                                ? "#fff"
+                                : "",
                           }}>
                           <input
                             className={
@@ -401,7 +433,10 @@ function Learning() {
                                 styles.container_learning__section__lesson__lecture__name
                               }
                               style={{
-                                color: activeLesson === lesson.id ? "#fff" : "",
+                                color:
+                                  configShowHide.activeLesson === lesson.id
+                                    ? "#fff"
+                                    : "",
                               }}>
                               {lesson.name}
                             </p>
@@ -432,7 +467,9 @@ function Learning() {
                               <p
                                 style={{
                                   color:
-                                    activeLesson === lesson.id ? "#fff" : "",
+                                    configShowHide.activeLesson === lesson.id
+                                      ? "#fff"
+                                      : "",
                                 }}>
                                 {lesson.duration}
                               </p>

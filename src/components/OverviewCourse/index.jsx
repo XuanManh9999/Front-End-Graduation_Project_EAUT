@@ -251,7 +251,7 @@ function OverviewCourse() {
               </Button>
             ) : (
               <Link
-                to={`/learning/${course?.slug}`}
+                to={`/learning`}
                 className={styles["overview-course__right-to-learning"]}>
                 Học ngay
               </Link>
