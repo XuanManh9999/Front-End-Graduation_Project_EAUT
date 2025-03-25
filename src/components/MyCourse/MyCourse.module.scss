@@ -1,0 +1,156 @@
+.container__my_course {
+  padding-bottom: 30px;
+  .container__my_course__head {
+    padding: 36px;
+    padding-bottom: 0;
+    max-height: 160px;
+    background-color: #1d1e27;
+    .container__my_course__head__title {
+      margin-bottom: 24px;
+      color: var(--text-color);
+      font-weight: 700;
+      line-height: 1.15;
+      max-width: 360px;
+      letter-spacing: -0.04rem;
+      font-size: 28px;
+      color: #fff;
+    }
+    .container__my_course__head__section {
+      display: flex;
+      gap: 16px;
+      .container__my_course__head__section__item {
+        padding: 12px 4px;
+        a {
+          color: #d1d2e0;
+          text-decoration: none;
+
+          &.active {
+            color: #fff;
+            position: relative;
+
+            &::after {
+              content: "";
+              width: 100%;
+              height: 8px;
+              background-color: #f6f7f9;
+              position: absolute;
+              bottom: -14px;
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .container__my_course_main {
+    .container__my_course_main__option {
+      padding: 36px;
+      padding-bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .container__my_course_main__left {
+        .container__my_course_main__left__title {
+          margin-top: 20px;
+          font-size: 24px;
+          font-weight: 700;
+          color: var(--text-color);
+        }
+      }
+      .container__my_course_main__right {
+        min-width: 300px;
+        display: flex;
+        gap: 10px;
+        .container__my_course_main__right__input_search {
+          height: 40px;
+          border: 1px solid #a6a6aa;
+          font-size: 14px;
+        }
+        .container__my_course_main__right__btn_search {
+          height: 40px;
+          width: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--primary-color);
+          svg {
+            font-size: 24px;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .container__my_course_main__list_item {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 18px;
+      row-gap: 20px;
+      .container__my_course_main__item {
+        cursor: pointer;
+        &:hover {
+          .container__my_course_main__item__img {
+            img {
+              filter: brightness(0.7);
+              transition: all ease 0.3s;
+            }
+            svg {
+              display: block;
+            }
+          }
+        }
+        .container__my_course_main__item__img {
+          position: relative;
+          img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          }
+          svg {
+            transition: all ease 5s;
+            display: none;
+            font-size: 52px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+          }
+        }
+        .container__my_course_main__item__name {
+          margin-top: 8px;
+          font-size: 16px;
+          font-weight: 500;
+          display: -webkit-box;
+          -webkit-line-clamp: 2; /* Giới hạn tối đa 2 dòng */
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-break: break-word;
+        }
+        .container__my_course_main__item__name__author {
+          display: block;
+          margin: 6px 0;
+          font-size: 14px;
+          line-height: 1.5;
+        }
+        .container__my_course_main__item__process {
+          .container__my_course_main__item__process__line {
+            color: var(--primary-color) !important;
+          }
+          .container__my_course_main__item__process__percent {
+          }
+        }
+      }
+    }
+  }
+  .container__my_course__pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    .container__my_course__pagination__item {
+      font-size: 16px;
+    }
+  }
+}

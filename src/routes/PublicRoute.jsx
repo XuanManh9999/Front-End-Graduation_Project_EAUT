@@ -6,6 +6,7 @@ import Current from "../components/Authentication/Current";
 import Register from "../components/Authentication/Register";
 import ForgotPassword from "../components/Authentication/ForgotPassword";
 import OverviewCourse from "../components/OverviewCourse";
+import MyCourse from "../components/MyCourse/index";
 
 const publicRoutes = [
   {
@@ -31,6 +32,10 @@ const publicRoutes = [
       {
         path: URL.PUBLIC.COURSE_INFO,
         element: <OverviewCourse />,
+      },
+      {
+        path: URL.PUBLIC.MY_COURSE,
+        element: <MyCourse />,
       },
     ],
   },

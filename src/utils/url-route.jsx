@@ -7,6 +7,7 @@ const URL = {
   PUBLIC: {
     HOME: "/",
     COURSE_INFO: "/course-info/:idCourse",
+    MY_COURSE: "/my-course/learning",
   },
   PRIVATE: {
     HOME: "/learning",

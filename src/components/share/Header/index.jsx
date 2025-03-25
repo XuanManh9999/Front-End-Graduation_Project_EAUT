@@ -14,6 +14,7 @@ import "./config-css-header.css";
 import CustomModalFunction from "../MocalFunction";
 
 function Header() {
+  const [inputSearch, setInputSearch] = useState("");
   const { t, i18n } = useTranslation();
   const [isLogin, setIsLogin] = useState(true);
   const [isHovered, setIsHovered] = useState({
@@ -135,7 +136,9 @@ function Header() {
     console.log("onsubmit", event);
   };
 
-  console.log("Xuan manh check dataInputModal", dataInputModal);
+  const handleOnChangeInputSearch = (event) => {
+    setInputSearch(event.target.value);
+  };
 
   return (
     <>
@@ -161,15 +164,63 @@ function Header() {
             <FaSearch className={styles.header__item__icon_search} />
             <input
               type="text"
+              name="search"
+              value={inputSearch}
+              onChange={handleOnChangeInputSearch}
               className={styles.header__item__input_search}
               placeholder={t("find_search__header")}
             />
+
+            {inputSearch.length > 0 && (
+              <div className={styles.header__item_search__modal_result_search}>
+                <ul
+                  className={
+                    styles.header__item_search__modal_result_search__list
+                  }>
+                  <Link
+                    to={"/course-info/1"}
+                    className={
+                      styles.header__item_search__modal_result_search__item
+                    }>
+                    <img
+                      className={
+                        styles.header__item_search__modal_result_search__item__left
+                      }
+                      src="https://img-c.udemycdn.com/course/480x270/6333675_c7df.jpg"
+                      alt=""
+                    />
+                    <div
+                      className={
+                        styles.header__item_search__modal_result_search__item__right
+                      }>
+                      <p
+                        className={
+                          styles.header__item_search__modal_result_search__item__right__title
+                        }>
+                        Khóa học Figma từ căn bản đến thực chiến [2025 BIG
+                        UPDATE!]
+                      </p>
+                      <p
+                        className={
+                          styles.header__item_search__modal_result_search__item__right__author
+                        }>
+                        Nguyễn Xuân Mạnh
+                      </p>
+                    </div>
+                  </Link>
+                </ul>
+              </div>
+            )}
           </li>
           <li className={styles.header__item}>
             <p className={styles.header__item__title}>{t("learn")}</p>
           </li>
           <li className={styles.header__item}>
-            <p className={styles.header__item__title}>{t("study")}</p>
+            <Link
+              to={"/my-course/learning"}
+              className={styles.header__item__title}>
+              {t("study")}
+            </Link>
           </li>
           <li className={styles.header__item}>
             <Button

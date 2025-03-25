@@ -37,33 +37,32 @@ function Current() {
   const LoggedInView = () => (
     <div className={styles.dashboard}>
       <div className={styles.welcome_section}>
-              <img
-                src="https://img-c.udemycdn.com/user/100x100/285978675_5cf5.jpg"
-                alt="avatar"
+        <img
+          src="https://img-c.udemycdn.com/user/100x100/285978675_5cf5.jpg"
+          alt="avatar"
           className={styles.avatar}
-              />
+        />
         <div className={styles.welcome_text}>
-                <h2>Chào mừng Nguyễn Xuân Mạnh trở lại!</h2>
-                <span>Lập trình viên web</span>
-              </div>
-            </div>
+          <h2>Chào mừng Nguyễn Xuân Mạnh trở lại!</h2>
+          <span>Lập trình viên web</span>
+        </div>
+      </div>
 
       <div className={styles.learning_section}>
         <div className={styles.section_header}>
-                <h2>Hãy bắt đầu học nào</h2>
+          <h2>Hãy bắt đầu học nào</h2>
           <Link to="/learning" className="section_header__learn">
             Học tập
           </Link>
-              </div>
+        </div>
 
         <div className={styles.learning_list}>
-          {/* Giả sử có một mảng courses chứa thông tin khóa học */}
           {[1, 2, 3, 4].map((_, index) => (
             <LearningItem
               key={index}
               course={{
                 thumbnail:
-                  "https://mp4-c.udemycdn.com/2023-07-30_13-22-08-da37812567f99dad42c0317fc3bef669/2/thumb-1.jpg?Expires=1739726447&Signature=lbTJI7DLv8bfBWAv3n2ic8UgcFK3z0ATGrCYP1Q7K~dnEeNCBPrO69y79t3CMgCow8O59dAC~1aPeWYlLpNZ~Bz5q6I8OvSs~8fuygV12QfZZyBkJeYFKg081HvhEiAiIR-ej5fUMDgf2Zjhb0KdP66GVoVazgJMITuGtUEgmPpJKLDaalqlcMLJSC-LmTPgK7UYo09kZCV4TVtq91dBsOnyGB-ZhWz~GS0tF~BckhrGKoF~Ip0MkFuI7HPfVMo~DmXFHs0KW78P3WGT5E3aN9EYx1Se4O5AXgFaKEKvRGMMYps2ty~mr7DcJNNS2sWZ-AExZCXBXDQc0DZMXN0nGg__&Key-Pair-Id=K3MG148K9RIRF4",
+                  "https://img-c.udemycdn.com/course/480x270/6333675_c7df.jpg",
                 title: "Thực chiến microservice với Spring Boot",
                 lessonTitle: "3. 25 phút hiểu rõ về Micro service",
                 remainingTime: "Bài giảng: còn 25 phút",
@@ -71,13 +70,13 @@ function Current() {
               }}
             />
           ))}
-              </div>
-            </div>
+        </div>
+      </div>
 
-            <CarouselProduct />
+      <CarouselProduct />
       <CarouselProduct title="Phổ biến cho lập trình web" />
-            <CourseProductList />
-          </div>
+      <CourseProductList />
+    </div>
   );
 
   return (

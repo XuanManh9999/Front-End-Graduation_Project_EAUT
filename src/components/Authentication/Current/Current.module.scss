@@ -140,7 +140,8 @@ $breakpoint-large: 1340px;
 }
 
 .learning_item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.4fr 9fr;
   gap: 16px;
   padding: 16px;
   border: 1px solid #d1d7dc;
@@ -161,9 +162,9 @@ $breakpoint-large: 1340px;
   }
 
   &__left {
+    cursor: pointer;
     position: relative;
-    width: 120px;
-    height: 68px;
+    height: 100%;
     flex-shrink: 0;
 
     @include tablet {
@@ -194,9 +195,9 @@ $breakpoint-large: 1340px;
 
     .icon_play {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.9);
+      top: calc(50% - 16px);
+      left: calc(50% - 16px);
+      transform: translate(-50%, -50%);
       color: white;
       font-size: 32px;
       opacity: 0;
